@@ -1,0 +1,433 @@
+<!doctype html><html lang=zh-cn class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Cluster API Searching Has Never Been Easier | Clusterpedia.io</title>
+<meta name=description content="0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式，用户在多云平台创建或者纳管集群后，便可以直接使用 kubectl 来检索这些集群内的资源。
+
+我们在 Clusterpedia 仓库 中维护了各个多云平台的 ClusterImportPolicy。 非常欢迎大家提交用于对 …">
+<meta property="og:title" content="Cluster API Searching Has Never Been Easier">
+<meta property="og:description" content="0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式，用户在多云平台创建或者纳管集群后，便可以直接使用 kubectl 来检索这些集群内的资源。
+ 我们在 Clusterpedia 仓库 中维护了各个多云平台的 ClusterImportPolicy。 非常欢迎大家提交用于对接其他多云平台的 ClusterImportPolicy。
+用户在安装 Clusterpedia 后，创建合适的 ClusterImportPolicy 即可，用户也可以根据自己的需求来创建新的 ClusterImportPolicy
+ Cluster API 的 ClusterImportPolicy 已经在 clusterpedia#288 中提交, 在 Cluster API 中创建集群后，可以直接使用 Clusterpedia 来对这些集群内的资源进行复杂检索。
+$ kubectl get cluster NAME PHASE AGE VERSION capi-quickstart Provisioned 10m v1.24.2 capi-quickstart-2 Provisioned 118s v1.24.2 $ kubectl get kubeadmcontrolplane NAME CLUSTER INITIALIZED API SERVER AVAILABLE REPLICAS READY UPDATED UNAVAILABLE AGE VERSION capi-quickstart-2-ctm9k capi-quickstart-2 true 1 1 1 10m v1.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/zh-cn/blog/2022/08/04/cluster-api-searching-has-never-been-easier/"><meta property="article:section" content="blog">
+<meta property="article:published_time" content="2022-08-04T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-08-04T00:00:00+00:00"><meta property="og:site_name" content="Clusterpedia.io">
+<meta itemprop=name content="Cluster API Searching Has Never Been Easier">
+<meta itemprop=description content="0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式，用户在多云平台创建或者纳管集群后，便可以直接使用 kubectl 来检索这些集群内的资源。
+ 我们在 Clusterpedia 仓库 中维护了各个多云平台的 ClusterImportPolicy。 非常欢迎大家提交用于对接其他多云平台的 ClusterImportPolicy。
+用户在安装 Clusterpedia 后，创建合适的 ClusterImportPolicy 即可，用户也可以根据自己的需求来创建新的 ClusterImportPolicy
+ Cluster API 的 ClusterImportPolicy 已经在 clusterpedia#288 中提交, 在 Cluster API 中创建集群后，可以直接使用 Clusterpedia 来对这些集群内的资源进行复杂检索。
+$ kubectl get cluster NAME PHASE AGE VERSION capi-quickstart Provisioned 10m v1.24.2 capi-quickstart-2 Provisioned 118s v1.24.2 $ kubectl get kubeadmcontrolplane NAME CLUSTER INITIALIZED API SERVER AVAILABLE REPLICAS READY UPDATED UNAVAILABLE AGE VERSION capi-quickstart-2-ctm9k capi-quickstart-2 true 1 1 1 10m v1."><meta itemprop=datePublished content="2022-08-04T00:00:00+00:00">
+<meta itemprop=dateModified content="2022-08-04T00:00:00+00:00">
+<meta itemprop=wordCount content="859">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Cluster API Searching Has Never Been Easier">
+<meta name=twitter:description content="0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式，用户在多云平台创建或者纳管集群后，便可以直接使用 kubectl 来检索这些集群内的资源。
+ 我们在 Clusterpedia 仓库 中维护了各个多云平台的 ClusterImportPolicy。 非常欢迎大家提交用于对接其他多云平台的 ClusterImportPolicy。
+用户在安装 Clusterpedia 后，创建合适的 ClusterImportPolicy 即可，用户也可以根据自己的需求来创建新的 ClusterImportPolicy
+ Cluster API 的 ClusterImportPolicy 已经在 clusterpedia#288 中提交, 在 Cluster API 中创建集群后，可以直接使用 Clusterpedia 来对这些集群内的资源进行复杂检索。
+$ kubectl get cluster NAME PHASE AGE VERSION capi-quickstart Provisioned 10m v1.24.2 capi-quickstart-2 Provisioned 118s v1.24.2 $ kubectl get kubeadmcontrolplane NAME CLUSTER INITIALIZED API SERVER AVAILABLE REPLICAS READY UPDATED UNAVAILABLE AGE VERSION capi-quickstart-2-ctm9k capi-quickstart-2 true 1 1 1 10m v1.">
+<link rel=preload href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css as=style>
+<link href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+<script src=https://unpkg.com/lunr@2.3.9/lunr.min.js integrity=sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli crossorigin=anonymous></script>
+<link href=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.css rel=stylesheet>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZQPMJ4HH3"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NZQPMJ4HH3',{anonymize_ip:!1})}</script>
+</head>
+<body class="td-page td-blog">
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/zh-cn/>
+<span class=navbar-logo><svg id="Graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g id="Cpedia_-_Graph_-_Color_Dark" data-name="Cpedia - Graph - Color Dark"><rect id="Frame" width="512" height="512" fill="none"/><path id="Secondary" d="M476 221.051A274.908 274.908.0 00428.269 256 282.438 282.438.0 01395.7 220.752a322.971 322.971.0 0156.3-41.27zM362.4 256a334.139 334.139.0 00-53.2 92.145A329.953 329.953.0 00295.32 394.6a322.932 322.932.0 00-7.587 69.4h48a274.957 274.957.0 016.4-58.813 282.32 282.32.0 0114.238-45.835 285.94 285.94.0 0139.323-68.1A330.2 330.2.0 01362.4 256zM169.865 405.189a274.9 274.9.0 016.4 58.811h48a322.893 322.893.0 00-7.589-69.4 282.46 282.46.0 00-46.811 10.589zM179.94 300.03A333.961 333.961.0 00149.6 256a330 330 0 00-33.291-35.248A322.915 322.915.0 0060 179.482L36 221.051A274.964 274.964.0 0183.733 256a282.3 282.3.0 0132.576 35.248 286.331 286.331.0 0122.054 32.768 286.3 286.3.0 0117.264 35.339A330.144 330.144.0 01202.8 348.148 334.156 334.156.0 00179.94 300.03zM169.865 106.811a274.966 274.966.0 01-54.132-23.862l-24 41.569a322.934 322.934.0 0063.894 28.127 282.241 282.241.0 0014.238-45.834zm186.507 45.836a322.994 322.994.0 0063.895-28.129l-24-41.569a275.02 275.02.0 01-54.133 23.864A282.293 282.293.0 01295.32 117.4a286.278 286.278.0 01-39.307 2.716h-.1a286.366 286.366.0 01-39.237-2.718 330.245 330.245.0 01-13.88 46.455 334.129 334.129.0 0053.1 4.263h.115a333.931 333.931.0 0053.187-4.261 329.92 329.92.0 0047.174-11.208z" fill="#1b1c1d"/><path id="Primary" d="M211.993 256l22-38.1h44l22 38.1-22 38.105h-44zM342.134 106.813A274.957 274.957.0 01335.733 48h-48a322.932 322.932.0 007.587 69.4 282.293 282.293.0 0046.814-10.587zM428.269 256A282.438 282.438.0 01395.7 220.752a285.92 285.92.0 01-39.323-68.105A329.92 329.92.0 01309.2 163.854 334.125 334.125.0 00362.4 256a330.2 330.2.0 0033.3 35.248 322.971 322.971.0 0056.3 41.27l24-41.569A274.908 274.908.0 01428.269 256zM149.6 256a333.961 333.961.0 0030.34-44.03 334.156 334.156.0 0022.86-48.118 330.245 330.245.0 0013.88-46.455A322.893 322.893.0 00224.267 48h-48a274.9 274.9.0 01-6.4 58.811 282.241 282.241.0 01-14.238 45.834 286.3 286.3.0 01-17.264 35.339 286.331 286.331.0 01-22.054 32.768A330 330 0 01149.6 256zm-65.867.0A274.964 274.964.0 0136 290.949l24 41.569a322.915 322.915.0 0056.309-41.27A282.3 282.3.0 0083.733 256zM255.9 343.885a334.129 334.129.0 00-53.1 4.263 330.144 330.144.0 00-47.171 11.207 322.934 322.934.0 00-63.894 28.127l24 41.569a274.966 274.966.0 0154.132-23.862A282.46 282.46.0 01216.678 394.6a286.366 286.366.0 0139.237-2.718h.1A286.278 286.278.0 01295.32 394.6a329.953 329.953.0 0113.88-46.456 334.028 334.028.0 00-53.187-4.26zm86.236 61.3a275.027 275.027.0 0154.133 23.864l24-41.569a322.991 322.991.0 00-63.895-28.13 282.32 282.32.0 00-14.24 45.837z" fill="#33de72"/></g></svg></span><span class=font-weight-bold>Clusterpedia.io</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=/zh-cn/about/><span>关于</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class="nav-link active" href=/zh-cn/blog/><i class="fas fa-blog"></i><span class=active>博客</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=/zh-cn/docs/><i class="fas fa-book"></i><span>文档</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=https://github.com/clusterpedia-io/clusterpedia target=_blank><i class="fab fa-github"></i><span>GitHub</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=https://cloud-native.slack.com/messages/clusterpedia target=_blank><i class="fab fa-slack"></i><span>Slack</span></a>
+</li>
+<li class="nav-item dropdown mr-4 d-none d-lg-block">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+中文 Chinese
+</a>
+<div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/blog/2022/08/04/cluster-api-searching-has-never-been-easier/>English</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+</div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<div class="nav-item dropdown d-block d-lg-none">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+中文 Chinese
+</a>
+<div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/blog/2022/08/04/cluster-api-searching-has-never-been-easier/>English</a>
+</div>
+</div>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zh-cnblog-li>
+<a href=/zh-cn/blog/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-zh-cnblog><span>博客</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-zh-cnblog20220804cluster-api-searching-has-never-been-easier-li>
+<a href=/zh-cn/blog/2022/08/04/cluster-api-searching-has-never-been-easier/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220804cluster-api-searching-has-never-been-easier><span class=td-sidebar-nav-active-item>Cluster API Searching Has Never Been Easier</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220429clusterpedia-e585a5e98089e4ba91e58e9fe7949fe585a8e699afe59bbe-li>
+<a href=/zh-cn/blog/2022/04/29/clusterpedia-%E5%85%A5%E9%80%89%E4%BA%91%E5%8E%9F%E7%94%9F%E5%85%A8%E6%99%AF%E5%9B%BE/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220429clusterpedia-e585a5e98089e4ba91e58e9fe7949fe585a8e699afe59bbe><span>Clusterpedia 入选云原生全景图</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220412clusterpedia-v020-e58f91e5b883-li>
+<a href=/zh-cn/blog/2022/04/12/clusterpedia-v0.2.0-%E5%8F%91%E5%B8%83/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220412clusterpedia-v020-e58f91e5b883><span>Clusterpedia v0.2.0 发布</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220411e4bdbfe794a8-helm-e5bfabe9809fe983a8e7bdb2-clusterpedia-li>
+<a href=/zh-cn/blog/2022/04/11/%E4%BD%BF%E7%94%A8-helm-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-clusterpedia/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220411e4bdbfe794a8-helm-e5bfabe9809fe983a8e7bdb2-clusterpedia><span>使用 Helm 快速部署 Clusterpedia</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220401clusterpedia-e4b88ae6a69c-csdn-it-e68a80e69cafe5bdb1e5938de58a9be4b98be6989f-li>
+<a href=/zh-cn/blog/2022/04/01/clusterpedia-%E4%B8%8A%E6%A6%9C-csdn-it-%E6%8A%80%E6%9C%AF%E5%BD%B1%E5%93%8D%E5%8A%9B%E4%B9%8B%E6%98%9F/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220401clusterpedia-e4b88ae6a69c-csdn-it-e68a80e69cafe5bdb1e5938de58a9be4b98be6989f><span>Clusterpedia 上榜| CSDN IT 技术影响力之星</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220301e8a786e9a291e8aeb2e8a7a3clusterpedia-e5a49ae4ba91e78eafe5a283e4b88be79a84e8b584e6ba90e5a48de69d82e6a380e7b4a2-li>
+<a href=/zh-cn/blog/2022/03/01/%E8%A7%86%E9%A2%91%E8%AE%B2%E8%A7%A3clusterpedia-%E5%A4%9A%E4%BA%91%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E5%A4%8D%E6%9D%82%E6%A3%80%E7%B4%A2/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220301e8a786e9a291e8aeb2e8a7a3clusterpedia-e5a49ae4ba91e78eafe5a283e4b88be79a84e8b584e6ba90e5a48de69d82e6a380e7b4a2><span>视频讲解｜Clusterpedia -- 多云环境下的资源复杂检索</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220216e9a696e58f91clusterpedia-010-e59b9be5a4a7e9878de8a681e58a9fe883bd-li>
+<a href=/zh-cn/blog/2022/02/16/%E9%A6%96%E5%8F%91clusterpedia-0.1.0-%E5%9B%9B%E5%A4%A7%E9%87%8D%E8%A6%81%E5%8A%9F%E8%83%BD/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220216e9a696e58f91clusterpedia-010-e59b9be5a4a7e9878de8a681e58a9fe883bd><span>首发｜Clusterpedia 0.1.0 四大重要功能</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20220215e58d87e7baa7e588b0-clusterpedia-010-li>
+<a href=/zh-cn/blog/2022/02/15/%E5%8D%87%E7%BA%A7%E5%88%B0-clusterpedia-0.1.0/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20220215e58d87e7baa7e588b0-clusterpedia-010><span>升级到 Clusterpedia 0.1.0</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cnblog20211203clusterpedia-e58aa0e68c81-kubectle6a380e7b4a2e5a49ae99b86e7bea4e8b584e6ba90-li>
+<a href=/zh-cn/blog/2021/12/03/clusterpedia-%E5%8A%A0%E6%8C%81-kubectl%E6%A3%80%E7%B4%A2%E5%A4%9A%E9%9B%86%E7%BE%A4%E8%B5%84%E6%BA%90/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cnblog20211203clusterpedia-e58aa0e68c81-kubectle6a380e7b4a2e5a49ae99b86e7bea4e8b584e6ba90><span>Clusterpedia 加持 kubectl，检索多集群资源</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<a href=https://github.com/clusterpedia-io/website/tree/main/content/zh-cn/blog/interfacing-to-cluster-api.md class=td-page-meta--view target=_blank rel=noopener><i class="fa fa-file-alt fa-fw"></i> 查看页面源码</a>
+<a href=https://github.com/clusterpedia-io/website/edit/main/content/zh-cn/blog/interfacing-to-cluster-api.md class=td-page-meta--edit target=_blank rel=noopener><i class="fa fa-edit fa-fw"></i> 编辑此页</a>
+<a href="https://github.com/clusterpedia-io/website/new/main/content/zh-cn/blog/interfacing-to-cluster-api.md?filename=change-me.md&value=---%0Atitle%3A+%22Long+Page+Title%22%0AlinkTitle%3A+%22Short+Nav+Title%22%0Aweight%3A+100%0Adescription%3A+%3E-%0A+++++Page+description+for+heading+and+indexes.%0A---%0A%0A%23%23+Heading%0A%0AEdit+this+template+to+create+your+new+page.%0A%0A%2A+Give+it+a+good+name%2C+ending+in+%60.md%60+-+e.g.+%60getting-started.md%60%0A%2A+Edit+the+%22front+matter%22+section+at+the+top+of+the+page+%28weight+controls+how+its+ordered+amongst+other+pages+in+the+same+directory%3B+lowest+number+first%29.%0A%2A+Add+a+good+commit+message+at+the+bottom+of+the+page+%28%3C80+characters%3B+use+the+extended+description+field+for+more+detail%29.%0A%2A+Create+a+new+branch+so+you+can+preview+your+new+file+and+request+a+review+via+Pull+Request.%0A" class=td-page-meta--child target=_blank rel=noopener><i class="fa fa-edit fa-fw"></i> 添加子页面</a>
+<a href="https://github.com/clusterpedia-io/website/issues/new?title=Cluster%20API%20Searching%20Has%20Never%20Been%20Easier" class=td-page-meta--issue target=_blank rel=noopener><i class="fab fa-github fa-fw"></i> 提交文档问题</a>
+<a href=https://github.com/clusterpedia-io/website/issues/new class=td-page-meta--project-issue target=_blank rel=noopener><i class="fas fa-tasks fa-fw"></i> 提交项目问题</a>
+<a id=print href=/zh-cn/blog/_print/><i class="fa fa-print fa-fw"></i> 整节打印</a>
+</div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li><a href=#快速部署一套-cluster-api-and-clusterpedia-的示例环境>快速部署一套 Cluster API And Clusterpedia 的示例环境</a>
+<ul>
+<li><a href=#预备条件>预备条件</a></li>
+<li><a href=#创键管理集群并部署-cluster-api>创键管理集群并部署 Cluster API</a></li>
+<li><a href=#部署-clusterpedia>部署 Clusterpedia</a></li>
+</ul>
+</li>
+<li><a href=#使用-cluster-api-创建集群>使用 Cluster API 创建集群</a>
+<ul>
+<li><a href=#观察集群创建情况>观察集群创建情况</a></li>
+</ul>
+</li>
+<li><a href=#对多个集群的资源检索>对多个集群的资源检索</a>
+<ul>
+<li><a href=#检索条件>检索条件</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5 pr-md-4" role=main>
+<div class=td-content>
+<h1>Cluster API Searching Has Never Been Easier</h1>
+<div class="td-byline mb-4">
+<time datetime=2022-08-04 class=text-muted>2022.08.04</time>
+</div>
+<header class=article-meta>
+<p class=reading-time><i class="fa fa-clock" aria-hidden=true></i>&nbsp; 5 分钟阅读 &nbsp;</p>
+</header>
+<p>0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式，用户在多云平台创建或者纳管集群后，便可以直接使用 kubectl 来检索这些集群内的资源。</p>
+<blockquote>
+<p>我们在 <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/deploy/clusterimportpolicy>Clusterpedia 仓库</a> 中维护了各个多云平台的 <a href=https://clusterpedia.io/zh-cn/docs/concepts/cluster-import-policy/>ClusterImportPolicy</a>。 非常欢迎大家提交用于对接其他多云平台的 ClusterImportPolicy。</p>
+<p>用户在安装 Clusterpedia 后，创建合适的 ClusterImportPolicy 即可，用户也可以根据自己的需求来<a href=https://clusterpedia.io/docs/usage/interfacing-to-multi-cloud-platforms/#new-clusterimportpolicy>创建新的 ClusterImportPolicy</a></p>
+</blockquote>
+<p>Cluster API 的 ClusterImportPolicy 已经在 <a href=https://github.com/clusterpedia-io/clusterpedia/pull/288>clusterpedia#288</a> 中提交, 在 Cluster API 中创建集群后，可以直接使用 Clusterpedia 来对这些集群内的资源进行复杂检索。</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get cluster
+NAME                PHASE         AGE    VERSION
+capi-quickstart     Provisioned   10m    v1.24.2
+capi-quickstart-2   Provisioned   118s   v1.24.2
+
+$ kubectl get kubeadmcontrolplane
+NAME                      CLUSTER             INITIALIZED   API SERVER AVAILABLE   REPLICAS   READY   UPDATED   UNAVAILABLE   AGE   VERSION
+capi-quickstart-2-ctm9k   capi-quickstart-2   <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             10m   v1.24.2
+capi-quickstart-2xcsz     capi-quickstart     <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             19m   v1.24.2
+
+$ <span style=color:#8f5902;font-style:italic># pediacluster 会根据 cluster 资源自动创建，更新和删除</span>
+$ kubectl get pediacluster -o wide
+NAME                        READY   VERSION   APISERVER   VALIDATED   SYNCHRORUNNING   CLUSTERHEALTHY
+default-capi-quickstart     True    v1.24.2               Validated   Running          Healthy
+default-capi-quickstart-2   True    v1.24.2               Validated   Running          Healthy
+
+$ kubectl --cluster clusterpedia get no
+CLUSTER                     NAME                                            STATUS     ROLES           AGE   VERSION
+default-capi-quickstart-2   capi-quickstart-2-ctm9k-g2m87                   NotReady   control-plane   12m   v1.24.2
+default-capi-quickstart-2   capi-quickstart-2-md-0-s8hbx-7bd44554b5-kzcb6   NotReady   &lt;none&gt;          11m   v1.24.2
+default-capi-quickstart     capi-quickstart-2xcsz-fxrrk                     NotReady   control-plane   21m   v1.24.2
+default-capi-quickstart     capi-quickstart-md-0-9tw2g-b8b4f46cf-gggvq      NotReady   &lt;none&gt;          20m   v1.24.2
+</code></pre></div><h2 id=快速部署一套-cluster-api-and-clusterpedia-的示例环境>快速部署一套 Cluster API And Clusterpedia 的示例环境</h2>
+<h3 id=预备条件>预备条件</h3>
+<ul>
+<li>安装 <a href=https://kubernetes.io/docs/tasks/tools/install-kubectl/>kubectl</a> 到本地环境</li>
+<li>安装 <a href=https://kind.sigs.k8s.io/>Kind</a> and <a href=https://www.docker.com/>Docker</a></li>
+<li>安装 <a href=https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl>clusterctl</a></li>
+</ul>
+<blockquote>
+<p>Minimum kind supported version: v0.14.0</p>
+</blockquote>
+<h3 id=创键管理集群并部署-cluster-api>创键管理集群并部署 Cluster API</h3>
+<blockquote>
+<p>部署 Cluster API 也可以参考 <a href=https://cluster-api.sigs.k8s.io/user/quick-start.html>https://cluster-api.sigs.k8s.io/user/quick-start.html</a></p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cat &gt; kind-cluster-with-extramounts.yaml <span style=color:#4e9a06>&lt;&lt;EOF
+</span><span style=color:#4e9a06>kind: Cluster
+</span><span style=color:#4e9a06>apiVersion: kind.x-k8s.io/v1alpha4
+</span><span style=color:#4e9a06>nodes:
+</span><span style=color:#4e9a06>- role: control-plane
+</span><span style=color:#4e9a06>  extraMounts:
+</span><span style=color:#4e9a06>    - hostPath: /var/run/docker.sock
+</span><span style=color:#4e9a06>      containerPath: /var/run/docker.sock
+</span><span style=color:#4e9a06>EOF</span>
+
+$ kind create cluster --name capi-sample --config kind-cluster-with-extramounts.yaml
+
+$ <span style=color:#204a87>export</span> <span style=color:#000>CLUSTER_TOPOLOGY</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87>true</span>
+$ clusterctl init --infrastructure docker
+</code></pre></div><h3 id=部署-clusterpedia>部署 Clusterpedia</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git clone https://github.com/clusterpedia-io/clusterpedia.git <span style=color:#ce5c00;font-weight:700>&amp;&amp;</span> <span style=color:#204a87>cd</span> clusterpedia/charts
+$ helm install clusterpedia . <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --namespace clusterpedia-system <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --create-namespace <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --set <span style=color:#000>installCRDs</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87>true</span> <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  <span style=color:#8f5902;font-style:italic># --set persistenceMatchNode={{ LOCAL_PV_NODE }}</span>
+  --set <span style=color:#000>persistenceMatchNode</span><span style=color:#ce5c00;font-weight:700>=</span>capi-sample-control-plane
+</code></pre></div><blockquote>
+<p>clusterpedia charts 提供了 Local PV，需要创建 LOCAL PV 绑定的节点.
+如果不需要 charts 来创建 LOCAL PV，可以使用 <code>--set persistenceMatchNode=None</code>.
+<a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/charts>详见</a></p>
+</blockquote>
+<p>创建用于接入 Cluster API 的<a href=https://clusterpedia.io/docs/concepts/cluster-import-policy/>集群自动导入策略</a></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl apply -f https://raw.githubusercontent.com/Iceber/clusterpedia/add_cluster_api_clusterimportpolicy/deploy/clusterimportpolicy/cluster_api.yaml
+</code></pre></div><blockquote>
+<p>Clusterpedia 可以接入任何的多云管理平台，接入方式可以参考 <a href=https://clusterpedia.io/docs/usage/interfacing-to-multi-cloud-platforms/>Interfacing to Multi-Cloud Platforms</a></p>
+</blockquote>
+<p><a href=https://clusterpedia.io/docs/usage/access-clusterpedia/#configure-the-cluster-shortcut-for-kubectl>生成 kubectl cluster shortcut</a>，如果使用 client-go 或者 OpenAPI 来访问，可以省略该步骤</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/main/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
+
+$ <span style=color:#8f5902;font-style:italic># 使用 kubectl 检索多集群资源，当前 Cluster API 未创建集群，所以返回空</span>
+$ kubectl --cluster clusterpedia api-resources
+</code></pre></div><h2 id=使用-cluster-api-创建集群>使用 Cluster API 创建集群</h2>
+<p>使用示例环境的 Docker Provider 来创建集群时，需要添加 <code>--flavor development</code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ clusterctl generate cluster capi-quickstart --flavor development <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --kubernetes-version v1.24.2 <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --control-plane-machine-count<span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>1</span> <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  --worker-machine-count<span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>1</span> <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>  &gt; capi-quickstart.yaml
+$ kubectl apply -f ./capi-quickstart.yaml
+</code></pre></div><h3 id=观察集群创建情况>观察集群创建情况</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get cluster
+NAME              PHASE         AGE   VERSION
+capi-quickstart   Provisioned   8s    v1.24.2
+
+$ kubectl get kubeadmcontrolplane -w
+NAME                    CLUSTER           INITIALIZED   API SERVER AVAILABLE   REPLICAS   READY   UPDATED   UNAVAILABLE   AGE   VERSION
+capi-quickstart-2xcsz   capi-quickstart   <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             86s   v1.24.2
+</code></pre></div><p><strong>当 kubeadmcontrolplane 的 Initialized 为 True 后</strong>，clusterpedia 会自动同步该集群内的资源，可以使用 <code>kubectl --cluster clusterpedia get po -A</code> 来查看资源</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get pediacluster
+NAME                      READY   VERSION   APISERVER
+default-capi-quickstart   True    v1.24.2
+
+$ kubectl --cluster clusterpedia get pod -A
+NAMESPACE     CLUSTER                   NAME                                                  READY   STATUS    RESTARTS   AGE
+kube-system   default-capi-quickstart   kube-apiserver-capi-quickstart-2xcsz-fxrrk            1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m32s
+kube-system   default-capi-quickstart   kube-scheduler-capi-quickstart-2xcsz-fxrrk            1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m31s
+kube-system   default-capi-quickstart   coredns-6d4b75cb6d-lrwj4                              0/1     Pending   <span style=color:#0000cf;font-weight:700>0</span>          2m20s
+kube-system   default-capi-quickstart   kube-proxy-p8v9m                                      1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m20s
+kube-system   default-capi-quickstart   kube-controller-manager-capi-quickstart-2xcsz-fxrrk   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m32s
+kube-system   default-capi-quickstart   etcd-capi-quickstart-2xcsz-fxrrk                      1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m32s
+kube-system   default-capi-quickstart   kube-proxy-2ln2w                                      1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          105s
+kube-system   default-capi-quickstart   coredns-6d4b75cb6d-2hcmz                              0/1     Pending   <span style=color:#0000cf;font-weight:700>0</span>          2m20s
+</code></pre></div><p>自动创建的 pediacluster 默认的同步资源在 cluster-api <a href=https://clusterpedia.io/docs/concepts/cluster-import-policy/#pediacluster-template>clusterimportpolicy 中设置</a>，</p>
+<p>用户也可以手动修改 pediacluster 中同步的配置, <a href=https://clusterpedia.io/docs/usage/sync-resources/>Synchronize Cluster Resources</a></p>
+<p>在 Cluster API 中删除集群时，Clusterpedia 也同步删除 PeidaCluster，不会继续同步该集群</p>
+<h2 id=对多个集群的资源检索>对多个集群的资源检索</h2>
+<p>使用上述步骤创建多个集群</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get cluster
+NAME                PHASE         AGE    VERSION
+capi-quickstart     Provisioned   10m    v1.24.2
+capi-quickstart-2   Provisioned   118s   v1.24.2
+
+$ kubectl get kubeadmcontrolplane
+NAME                      CLUSTER             INITIALIZED   API SERVER AVAILABLE   REPLICAS   READY   UPDATED   UNAVAILABLE   AGE   VERSION
+capi-quickstart-2-ctm9k   capi-quickstart-2   <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             10m   v1.24.2
+capi-quickstart-2xcsz     capi-quickstart     <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             19m   v1.24.2
+
+$ <span style=color:#8f5902;font-style:italic># pediacluster 会根据 cluster 资源自动创建</span>
+$ kubectl get pediacluster -o wide
+NAME                        READY   VERSION   APISERVER   VALIDATED   SYNCHRORUNNING   CLUSTERHEALTHY
+default-capi-quickstart     True    v1.24.2               Validated   Running          Healthy
+default-capi-quickstart-2   True    v1.24.2               Validated   Running          Healthy
+
+$ kubectl --cluster clusterpedia get no
+CLUSTER                     NAME                                            STATUS     ROLES           AGE   VERSION
+default-capi-quickstart-2   capi-quickstart-2-ctm9k-g2m87                   NotReady   control-plane   12m   v1.24.2
+default-capi-quickstart-2   capi-quickstart-2-md-0-s8hbx-7bd44554b5-kzcb6   NotReady   &lt;none&gt;          11m   v1.24.2
+default-capi-quickstart     capi-quickstart-2xcsz-fxrrk                     NotReady   control-plane   21m   v1.24.2
+default-capi-quickstart     capi-quickstart-md-0-9tw2g-b8b4f46cf-gggvq      NotReady   &lt;none&gt;          20m   v1.24.2
+</code></pre></div><p><strong>clusterpedia 提供了两种资源检索方式</strong></p>
+<ul>
+<li><a href=https://clusterpedia.io/zh-cn/docs/usage/access-clusterpedia/#%E8%AE%BF%E9%97%AE-clusterpedia-%E8%B5%84%E6%BA%90>兼容 Kubernetes OpenAPI 的资源检索</a></li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl --cluster clusterpedia get cm -A
+NAMESPACE         CLUSTER                     NAME                                 DATA   AGE
+kube-system       default-capi-quickstart     extension-apiserver-authentication   <span style=color:#0000cf;font-weight:700>6</span>      19m
+kube-system       default-capi-quickstart     kubeadm-config                       <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-public       default-capi-quickstart     cluster-info                         <span style=color:#0000cf;font-weight:700>2</span>      19m
+kube-system       default-capi-quickstart     kube-proxy                           <span style=color:#0000cf;font-weight:700>2</span>      19m
+kube-node-lease   default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-system       default-capi-quickstart-2   extension-apiserver-authentication   <span style=color:#0000cf;font-weight:700>6</span>      10m
+kube-system       default-capi-quickstart     kubelet-config                       <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-system       default-capi-quickstart     coredns                              <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-system       default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-public       default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-system       default-capi-quickstart-2   coredns                              <span style=color:#0000cf;font-weight:700>1</span>      10m
+default           default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      19m
+kube-system       default-capi-quickstart-2   kube-proxy                           <span style=color:#0000cf;font-weight:700>2</span>      10m
+kube-system       default-capi-quickstart-2   kubeadm-config                       <span style=color:#0000cf;font-weight:700>1</span>      10m
+kube-system       default-capi-quickstart-2   kubelet-config                       <span style=color:#0000cf;font-weight:700>1</span>      10m
+kube-system       default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      10m
+kube-node-lease   default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      10m
+kube-public       default-capi-quickstart-2   cluster-info                         <span style=color:#0000cf;font-weight:700>3</span>      10m
+kube-public       default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      10m
+default           default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      10m
+
+$ <span style=color:#8f5902;font-style:italic># gen cluster shortcuts</span>
+$ curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/main/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
+$ kubectl --cluster default-capi-quickstart get cm -n kube-system
+</code></pre></div><ul>
+<li><a href=https://clusterpedia.io/zh-cn/docs/concepts/collection-resource/>Collection Resource</a></li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get collectionresources
+NAME            RESOURCES
+any             *
+workloads       apps.deployments,apps.daemonsets,apps.statefulsets
+kuberesources   .*,admission.k8s.io.*,admissionregistration.k8s.io.*,apiextensions.k8s.io.*,apps.*,authentication.k8s.io.*,authorization.k8s.io.*,autoscaling.*,batch.*,certificates.k8s.io.*,coordination.k8s.io.*,discovery.k8s.io.*,events.k8s.io.*,extensions.*,flowcontrol.apiserver.k8s.io.*,imagepolicy.k8s.io.*,internal.apiserver.k8s.io.*,networking.k8s.io.*,node.k8s.io.*,policy.*,rbac.authorization.k8s.io.*,scheduling.k8s.io.*,storage.k8s.io.*
+
+$ kubectl get collectionresources workloads
+</code></pre></div><h3 id=检索条件>检索条件</h3>
+<ul>
+<li><a href=https://clusterpedia.io/docs/usage/search/#search-by-metadata>元信息过滤(资源名称，命名空间，集群，创建时间区间)</a></li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl --cluster clusterpedia get cm -A -l <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    <span style=color:#4e9a06>&#34;search.clusterpedia.io/clusters in (default-capi-quickstart,default-capi-quickstart-2),\
+</span><span style=color:#4e9a06>    search.clusterpedia.io/namespaces in (kube-system,default)&#34;</span>
+NAMESPACE     CLUSTER                     NAME                                 DATA   AGE
+kube-system   default-capi-quickstart     extension-apiserver-authentication   <span style=color:#0000cf;font-weight:700>6</span>      23m
+kube-system   default-capi-quickstart     kubeadm-config                       <span style=color:#0000cf;font-weight:700>1</span>      23m
+kube-system   default-capi-quickstart     kube-proxy                           <span style=color:#0000cf;font-weight:700>2</span>      23m
+kube-system   default-capi-quickstart-2   extension-apiserver-authentication   <span style=color:#0000cf;font-weight:700>6</span>      14m
+kube-system   default-capi-quickstart     kubelet-config                       <span style=color:#0000cf;font-weight:700>1</span>      23m
+kube-system   default-capi-quickstart     coredns                              <span style=color:#0000cf;font-weight:700>1</span>      23m
+kube-system   default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      23m
+kube-system   default-capi-quickstart-2   coredns                              <span style=color:#0000cf;font-weight:700>1</span>      14m
+default       default-capi-quickstart     kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      23m
+kube-system   default-capi-quickstart-2   kube-proxy                           <span style=color:#0000cf;font-weight:700>2</span>      14m
+kube-system   default-capi-quickstart-2   kubeadm-config                       <span style=color:#0000cf;font-weight:700>1</span>      14m
+kube-system   default-capi-quickstart-2   kubelet-config                       <span style=color:#0000cf;font-weight:700>1</span>      14m
+kube-system   default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      14m
+default       default-capi-quickstart-2   kube-root-ca.crt                     <span style=color:#0000cf;font-weight:700>1</span>      14m
+</code></pre></div><ul>
+<li><a href=https://clusterpedia.io/docs/usage/search/multi-cluster/#fuzzy-search>模糊搜索</a></li>
+<li><a href=https://clusterpedia.io/docs/usage/search/multi-cluster/#field-selector>增强的 Field Selector</a></li>
+<li><a href=https://clusterpedia.io/docs/usage/search/multi-cluster/#search-by-parent-or-ancestor-owner>根据父辈或者祖辈 Owner 检索</a></li>
+<li><a href=https://clusterpedia.io/docs/usage/search/multi-cluster/#paging-and-sorting>分页和排序</a></li>
+<li><a href=https://clusterpedia.io/docs/usage/search/#advanced-searchcustom-conditional-search>自定义条件搜索</a></li>
+</ul>
+<ul class="list-unstyled d-flex justify-content-between align-items-center mb-0 pt-5">
+<li>
+<a href=/zh-cn/blog/2022/04/29/clusterpedia-%E5%85%A5%E9%80%89%E4%BA%91%E5%8E%9F%E7%94%9F%E5%85%A8%E6%99%AF%E5%9B%BE/ aria-label="上一页 - Clusterpedia 入选云原生全景图" class="btn btn-primary"><span class=mr-1>←</span>上一页</a>
+</li>
+<a class="btn btn-primary disabled">下一页<span class=ml-1>→</span></a>
+</li>
+</ul>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank rel=noopener href=https://github.com/clusterpedia-io aria-label=GitHub>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank rel=noopener href=https://cloud-native.slack.com/messages/clusterpedia aria-label=Slack>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Developer mailing list" aria-label="Developer mailing list">
+<a class=text-white target=_blank rel=noopener href=mailto:clusterpedia@googlegroups.com aria-label="Developer mailing list">
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+<small class=text-white>&copy; 2022 The Clusterpedia Authors 保留所有权利</small>
+<p class=mt-2><a href=/zh-cn/about/>关于 Clusterpedia</a></p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<script src=/js/main.min.8ab8f81ff7e1454d30024cd6f956d4d341c3a97e2a673f988065f2ee4e147922.js integrity="sha256-irj4H/fhRU0wAkzW+VbU00HDqX4qZz+YgGXy7k4UeSI=" crossorigin=anonymous></script>
+<script src=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.js></script>
+</body>
+</html>

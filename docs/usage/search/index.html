@@ -66,7 +66,7 @@ English
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.4597264f47682bb2532692bc665fcadf.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -76,7 +76,7 @@ English
 <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
 <div id=td-sidebar-menu class=td-sidebar__inner>
 <form class="td-sidebar__search d-flex align-items-center">
-<input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.4597264f47682bb2532692bc665fcadf.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
 </button>
 </form>
@@ -112,10 +112,14 @@ English
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docsconcepts-li>
 <a href=/docs/concepts/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docsconcepts><span>Concepts</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptscollection-resource-li>
-<a href=/docs/concepts/collection-resource/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsconceptscollection-resource><span>Collection Resource</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptspediacluster-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptspediacluster-li>
 <a href=/docs/concepts/pediacluster/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsconceptspediacluster><span>PediaCluster</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptscluster-sync-resources-li>
+<a href=/docs/concepts/cluster-sync-resources/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsconceptscluster-sync-resources><span>Public Configuration of Cluster Sync Resources(ClusterSyncResources)</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptscollection-resource-li>
+<a href=/docs/concepts/collection-resource/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsconceptscollection-resource><span>Collection Resource</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsconceptscluster-import-policy-li>
+<a href=/docs/concepts/cluster-import-policy/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsconceptscluster-import-policy><span>Cluster Auto Import Policy</span></a>
 </li>
 </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docsusage-li>
@@ -123,6 +127,8 @@ English
 <ul class="ul-2 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsusageimport-clusters-li>
 <a href=/docs/usage/import-clusters/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsusageimport-clusters><span>Import Clusters</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsusageinterfacing-to-multi-cloud-platforms-li>
+<a href=/docs/usage/interfacing-to-multi-cloud-platforms/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsusageinterfacing-to-multi-cloud-platforms><span>Interfacing to Multi-Cloud Platforms</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsusagesync-resources-li>
 <a href=/docs/usage/sync-resources/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsusagesync-resources><span>Synchronize Cluster Resources</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsusageaccess-clusterpedia-li>
@@ -184,6 +190,7 @@ English
 <li><a href=#label-selector>Label Selector</a></li>
 <li><a href=#field-selector>Field Selector</a></li>
 <li><a href=#advanced-searchcustom-conditional-search>Advanced Search(Custom Conditional Search)</a></li>
+<li><a href=#collectionresource-url-query>CollectionResource URL Query</a></li>
 </ul>
 </nav></div>
 </aside>
@@ -204,7 +211,7 @@ English
 <div class=td-content>
 <h1>Search</h1>
 <header class=article-meta>
-<p class=reading-time><i class="fa fa-clock" aria-hidden=true></i>&nbsp; 3 minute read &nbsp;</p>
+<p class=reading-time><i class="fa fa-clock" aria-hidden=true></i>&nbsp; 4 minute read &nbsp;</p>
 </header>
 <p>Clusterpedia supports complex search for <a href=multi-cluster>multi-cluster resources</a>, <a href=specified-cluster>specified cluster resoruces</a>, and <a href=collection-resource>Collection Resources</a>.</p>
 <p>And these complex search conditions can be passed to <code>Clusterpedia APIServer</code> in two ways:</p>
@@ -470,6 +477,34 @@ using a left-closed, right-open internval.</p>
 </table>
 <p>Custom search is not supported by <em>search label</em>, only <em>url query</em> can be used to pass custom search SQL.</p>
 <p>In addition, this feature is still in alpha stage, you need to open the corresponding Feature Gate in <code>clusterpedia apiserver</code>, for details, please refer to <a href=../../features/raw-sql-query>Raw SQL Query</a></p>
+<h2 id=collectionresource-url-query>CollectionResource URL Query</h2>
+<p>The following URL Query belongs exclusively to Collection Resource.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>url query</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=collection-resource#only-metadata>get only the metadata of the resource</a></td>
+<td><code>onlyMetadata</code></td>
+<td><em>onlyMetadata=true</em></td>
+</tr>
+<tr>
+<td><a href=collection-resource#any-collectionresource>specify the groups of <code>any collectionresource</code></a></td>
+<td><code>groups</code></td>
+<td><em>groups=apps,cert-manager.io/v1</em></td>
+</tr>
+<tr>
+<td><a href=collection-resource#any-collectionresource>specify the resources of <code>any collectionresource</code></a></td>
+<td><code>resources</code></td>
+<td><em>resources=apps/deployments,batch/v1/cronjobs</em></td>
+</tr>
+</tbody>
+</table>
 <div class=section-index>
 <hr class=panel-line>
 <div class=entry>

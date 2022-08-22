@@ -65,7 +65,7 @@ English
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.4597264f47682bb2532692bc665fcadf.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -95,19 +95,22 @@ This is the multi-page printable view of this section.
 </ul>
 <li>2: <a href=#pg-dd948255948d6b59b32c471abcb62997>Concepts</a></li>
 <ul>
-<li>2.1: <a href=#pg-40243a331b263af5e1b61fd771638878>Collection Resource</a></li>
-<li>2.2: <a href=#pg-911128911953cea7ceaaad409a1badf1>PediaCluster</a></li>
+<li>2.1: <a href=#pg-911128911953cea7ceaaad409a1badf1>PediaCluster</a></li>
+<li>2.2: <a href=#pg-90ee9ed4f8367758c09e96dc82d2a800>Public Configuration of Cluster Sync Resources(ClusterSyncResources)</a></li>
+<li>2.3: <a href=#pg-40243a331b263af5e1b61fd771638878>Collection Resource</a></li>
+<li>2.4: <a href=#pg-d8808d404dd9644ce0c0ae679468c3a2>Cluster Auto Import Policy</a></li>
 </ul>
 <li>3: <a href=#pg-ec5a5e9379174e59d723f74f5206953c>Usage</a></li>
 <ul>
 <li>3.1: <a href=#pg-926b93f86224309ec4277c2c1b97fe8c>Import Clusters</a></li>
-<li>3.2: <a href=#pg-64bebf7ca20899cc843d095cee1d0313>Synchronize Cluster Resources</a></li>
-<li>3.3: <a href=#pg-bbba5e1deb968130546edf7495679ad0>Access the Clusterpedia</a></li>
-<li>3.4: <a href=#pg-48ab5663f4f8c240e7bf89c5454f249f>Search</a></li>
+<li>3.2: <a href=#pg-3fe23ba64b8bbae5fab0c8696ae005cb>Interfacing to Multi-Cloud Platforms</a></li>
+<li>3.3: <a href=#pg-64bebf7ca20899cc843d095cee1d0313>Synchronize Cluster Resources</a></li>
+<li>3.4: <a href=#pg-bbba5e1deb968130546edf7495679ad0>Access the Clusterpedia</a></li>
+<li>3.5: <a href=#pg-48ab5663f4f8c240e7bf89c5454f249f>Search</a></li>
 <ul>
-<li>3.4.1: <a href=#pg-ec8e2360424d04fb82dc27fbc4824983>Multiple Clusters</a></li>
-<li>3.4.2: <a href=#pg-d30ab8cb55be590100ae14cd7d8c1d47>Specified a Cluster</a></li>
-<li>3.4.3: <a href=#pg-83e3a820b19f3a40c674f197775a60c8>Collection Resource</a></li>
+<li>3.5.1: <a href=#pg-ec8e2360424d04fb82dc27fbc4824983>Multiple Clusters</a></li>
+<li>3.5.2: <a href=#pg-d30ab8cb55be590100ae14cd7d8c1d47>Specified a Cluster</a></li>
+<li>3.5.3: <a href=#pg-83e3a820b19f3a40c674f197775a60c8>Collection Resource</a></li>
 </ul>
 </ul>
 <li>4: <a href=#pg-56dc2b1c45b2c6b0983526530ba75d01>Features</a></li>
@@ -143,7 +146,7 @@ This is the multi-page printable view of this section.
 <p>Pull clusterpedia project:</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/clusterpedia-io/clusterpedia.git
 <span style=color:#204a87>cd</span> clusterpedia
-git checkout v0.3.0
+git checkout v0.4.1
 </code></pre></div><h3 id=install-storage-component>Install storage component</h3>
 <p>Clusterpedia installation provides two storage components (<strong>MySQL 8.0</strong> and <strong>PostgreSQL 12</strong>) to choose.</p>
 <blockquote>
@@ -181,8 +184,21 @@ kubectl apply -f ./deploy
 </code></pre></div><h3 id=final-check>Final check</h3>
 <p>Check if the component Pods are running properly</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl -n clusterpedia-system get pods
+</code></pre></div><h3 id=create-cluster-auto-import-policy--clusterimportpolicy>Create Cluster Auto Import Policy —— ClusterImportPolicy</h3>
+<p>After 0.4.0, Clusterpedia provides a more friendly way to interface to multi-cloud platforms.</p>
+<p>Users can create <code>ClusterImportPolicy</code> to automatically discover managed clusters in the multi-cloud platform and automatically synchronize them as <code>PediaCluster</code>,
+so you don&rsquo;t need to maintain <code>PediaCluster</code> manually based on the managed clusters.</p>
+<p>We maintain <code>PediaCluster</code> for each multi-cloud platform in the <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/deploy/clusterimportpolicy>Clusterpedia repository</a>. ClusterImportPolicy` for each multi-cloud platform.
+<strong>People also submit ClusterImportPolicy to Clusterpedia for interfacing to other multi-cloud platforms.</strong></p>
+<p>After installing Clusterpedia, you can create the appropriate <code>ClusterImportPolicy</code>,
+or <a href=../../usage/interfacing-to-multi-cloud-platforms#new-clusterimportpolicy>create a new <code>ClusterImportPolicy</code></a> according to your needs (multi-cloud platform).</p>
+<p>For details, please refer to <a href=../../usage/interfacing-to-multi-cloud-platforms#new-clusterimportpolicy>Interfacing to Multi-Cloud Platforms</a></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get clusterimportpolicy
 </code></pre></div><h2 id=uninstall>Uninstall</h2>
-<h3 id=clean-up-pediacluster>Clean up PediaCluster</h3>
+<h3 id=clean-up-clusterimportpolicy>Clean up ClusterImportPolicy</h3>
+<p>If you have deployed <code>ClusterImportPolicy</code> then you need to clean up the <code>ClusterImportPolicy</code> resources first.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get clusterimportpolicy
+</code></pre></div><h3 id=clean-up-pediacluster>Clean up PediaCluster</h3>
 <p>Before uninstalling Clusterpedia, you need to check if PediaCluster resources still exist in your environment, and clean up those resources.</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pediacluster
 </code></pre></div><h3 id=uninstall-clusterpedia>Uninstall Clusterpedia</h3>
@@ -394,21 +410,108 @@ rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 <h1 id=pg-dd948255948d6b59b32c471abcb62997>2 - Concepts</h1>
 </div>
 <div class=td-content>
-<h1 id=pg-40243a331b263af5e1b61fd771638878>2.1 - Collection Resource</h1>
+<h1 id=pg-911128911953cea7ceaaad409a1badf1>2.1 - PediaCluster</h1>
+<p>Clusterpedia uses the <code>PediaCluster</code> resource to represent a cluster that needs to synchronize and retrieve resources.</p>
+<blockquote>
+<p>Clusterpedia needs to be very friendly to other multi-cloud platforms that may use <code>Cluster</code> resource to represent managed clusters,
+to avoid conflicts Clusterpedia uses <code>PediaCluster</code>.</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get pediacluster
+NAME        APISERVER                        VERSION            STATUS
+demo1       https://10.6.101.100:6443        v1.22.3-aliyun.1   Healthy
+demo2       https://10.6.101.100:6443        v1.21.0            Healthy
+</code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaCluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>demo1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>apiserver</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>https://10.6.101.100:6443</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>kubeconfig</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>caData</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>tokenData</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>certData</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>keyData</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncAllCustomResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>false</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResourcesRefName</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>PediaCluster has two uses:</p>
+<ul>
+<li>Configure authentication information for the cluster</li>
+<li>Configure resources for synchronization</li>
+</ul>
+<p>Configuring cluster authentication information can be found in <a href=../../usage/import-clusters>Import Clusters</a></p>
+<p>There are three fields to configure the resources to be synchronized.</p>
+<ul>
+<li><code>spec.syncResources</code> configures the resources that need to be synchronized for this cluster</li>
+<li><code>spec.syncAllCustomResources</code> synchronizes all custom resources</li>
+<li><code>spec.syncResourcesRefName</code> references <a href=../cluster-sync-resources>Public Configuration of Cluster Sync Resources</a></li>
+</ul>
+<p>For details on configuring synchronization resources, see <a href=../../usage/sync-resources>Synchronize Cluster Resources</a></p>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-90ee9ed4f8367758c09e96dc82d2a800>2.2 - Public Configuration of Cluster Sync Resources(ClusterSyncResources)</h1>
+<p>The Clusterpedia provides the public configuration of cluster sync resources —— <code>ClusterSyncResources</code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get clustersyncresources
+</code></pre></div><p>The <code>spec.syncResources</code> field of <strong>ClusterSyncResources</strong> is configured in the same way as <strong>PediaCluster</strong>&rsquo;s <code>spec.syncResources</code>, see <a href=../../usage/sync-resources>Synchronize Cluster Resources</a></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterSyncResources</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>global-base</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>pods</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;apps&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#4e9a06>&#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The <code>spec.syncAllCustomResource</code> field will be supported in the future to support <a href=../../usage/sync-resources#sync-all-custom-resources>setting up the synchronization of all custom resources</a></p>
+<p>Any <strong>PediaCluster</strong> can refer to the same <strong>ClusterSyncResources</strong> via <code>spec.syncResourcesRefName</code> field.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaCluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>demo1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResourcesRefName</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;global-base&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>When we modify <strong>ClusterSyncResources</strong>, all resource types syncronized within the <strong>PediaCluster</strong> that reference it will be modified accordingly.</p>
+<p>If <strong>PediaCluster</strong> has both <code>spec.syncResourcesRefName</code> and <code>spec.syncResources</code> set, then the concatenation of the two will be used.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaCluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>demo1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResourcesRefName</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;global-base&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>pods</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>configmaps</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>In the above example, clusterpedia synchronizes the pods and configmaps resources, and all resources under the apps group in the <em>demo1</em> cluster.</p>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-40243a331b263af5e1b61fd771638878>2.3 - Collection Resource</h1>
 <p>In order to query multiple types of resources at once, Clusterpedia provides a new resource: <code>Collection Resource</code>.</p>
 <p><code>Collection Resource</code> is composed of different types of resources, and these resources can be retrieved and paged in a uniform way through the <code>Collection Resource</code>.</p>
-<p><strong>What Collection Resources are supported by the Clusterpedia depends on the <code>Storage Layer</code>.</strong> For example, the <code>Default Storage Layer</code> temporarily supports the <code>workloads</code> and <code>kuberesources</code>.</p>
+<p><strong>What Collection Resources are supported by the Clusterpedia depends on the <code>Storage Layer</code>.</strong> For example, the <code>Default Storage Layer</code> temporarily supports the <code>any</code>, <code>workloads</code> and <code>kuberesources</code>.</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get collectionresources
 </code></pre></div><pre tabindex=0><code># Output:
 NAME            RESOURCES
+any             *
 workloads       deployments.apps,daemonsets.apps,statefulsets.apps
-kuberesources   *,*.admission.k8s.io,*.admissionregistration.k8s.io,*.apiextensions.k8s.io,*.apps,*.authentication.k8s.io,*.authorization.k8s.io,*.autoscaling,*.batch,*.certificates.k8s.io,*.coordination.k8s.io,*.discovery.k8s.io,*.events.k8s.io,*.extensions,*.flowcontrol.apiserver.k8s.io,*.imagepolicy.k8s.io,*.internal.apiserver.k8s.io,*.networking.k8s.io,*.node.k8s.io,*.policy,*.rbac.authorization.k8s.io,*.scheduling.k8s.io,*.storage.k8s.io
-</code></pre><p><code>kuberesources</code> contains all of kube&rsquo;s built-in resources, and we can use <code>kuberesources</code> to filter and search all of theme in a uniform api.</p>
+kuberesources   .*,*.admission.k8s.io,*.admissionregistration.k8s.io,*.apiextensions.k8s.io,*.apps,*.authentication.k8s.io,*.authorization.k8s.io,*.autoscaling,*.batch,*.certificates.k8s.io,*.coordination.k8s.io,*.discovery.k8s.io,*.events.k8s.io,*.extensions,*.flowcontrol.apiserver.k8s.io,*.imagepolicy.k8s.io,*.internal.apiserver.k8s.io,*.networking.k8s.io,*.node.k8s.io,*.policy,*.rbac.authorization.k8s.io,*.scheduling.k8s.io,*.storage.k8s.io
+</code></pre><p><code>any</code> means any resources, the use need to pass the <em>groups</em> or <em>resources</em> he wants to combine when using it, for details see <a href=../../usage/search/collection-resource#any-collectionresource>Use Any CollectionResource</a></p>
+<p><code>kuberesources</code> contains all of kube&rsquo;s built-in resources, and we can use <code>kuberesources</code> to filter and search all of theme in a uniform api.</p>
 <p>View the supported <code>Collection Resource</code> in a yaml file</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get collectionresources -o yaml
 </code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># Output:</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v1</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>items</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia.io/v1beta1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CollectionResource</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>creationTimestamp</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>null</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>any</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>resourceTypes</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia.io/v1beta1</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CollectionResource</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
@@ -461,10 +564,258 @@ kuberesources   *,*.admission.k8s.io,*.admissionregistration.k8s.io,*.apiextensi
 <p>And <code>kuberesources</code> contains all of kube&rsquo;s built-in resources.</p>
 <p>For details about <code>Collection Resource</code>, see <a href=../../usage/search/collection-resource>Search for Collection Resource</a></p>
 <h2 id=custom-collection-resource>Custom Collection Resource</h2>
-<p><code>Default Storage Layer</code> will support <code>Custom Collection Resource</code> in future to enable users to combine any resource types freely.</p>
+<p>Clusterpedia plans to provide two ways to let users combine the types of resources they want to query at will.</p>
+<ul>
+<li><strong><code>Any CollectionResource</code></strong> —— use <code>any collectionresource</code></li>
+<li><strong><code>CustomCollectionResource</code></strong> —— custom collection resource</li>
+</ul>
+<p>After 0.4, Clusterpedia provides <code>any collectionresource</code> to allow users to combine defferent types of resources by passing <code>groups</code> and <code>resources</code> parameters.</p>
+<p>However, it should be noted that <code>any collectionresource</code> cannot be retrieved using kubectl, see <a href=../../usage/search/collection-resource#any-collectionresource>Using Any CollectionResource</a></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get collectionresources any
+Error from server <span style=color:#ce5c00;font-weight:700>(</span>BadRequest<span style=color:#ce5c00;font-weight:700>)</span>: url query - <span style=color:#4e9a06>`</span>groups<span style=color:#4e9a06>`</span> or <span style=color:#4e9a06>`</span>resources<span style=color:#4e9a06>`</span> is required
+</code></pre></div><p><strong>Custom Collection Resource</strong> allows users to create or update a Collection Resource via <code>kubectl apply collectionresource &lt;collectionresource name></code>, and users can configure the resource type of the Collection Resource at will.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia.io/v1beta1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>CollectionResource</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>workloads</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>resourceTypes</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>apps</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>deployments</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>apps</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>daemonsets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>apps</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>statefulsets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>batch</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cronjobs</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p><strong>Custom Collection Resource are not currently supported</strong></p>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-911128911953cea7ceaaad409a1badf1>2.2 - PediaCluster</h1>
+<h1 id=pg-d8808d404dd9644ce0c0ae679468c3a2>2.4 - Cluster Auto Import Policy</h1>
+<p>The custom resource <code>ClusterImportPolicy</code> defines how a certain type of resource should be converted into a <code>PediaCluster</code>,
+so that clusterpedia can automatically create, update and delete <a href=../pediacluster>PediaCluster</a> based on a certain resource.</p>
+<p>First we need to define the type of resource (that you want to convert) to watch to in the <code>ClusterImportPolicy</code> resource , we will call the resource being watched to the <strong>Source</strong> resource.</p>
+<p>When a <strong>Source</strong> resource is created or deleted, the <em>ClusterImportPolicy Controller</em> creates the corresponding <code>PediaClusterLifecycle</code> resource.</p>
+<p>The custom resource <code>PediaClusterLifecycle</code> creates, updates and deletes <code>PediaCluster</code> based on the specific <strong>Source</strong> resource.</p>
+<p>When creating and updating a <code>PediaCluster</code>, the <strong>Source</strong> resource may store the cluster&rsquo;s authentication information (eg. CA, Token, etc.) in other resources, which are collectively referred to as <strong>Reference</strong> resources.</p>
+<blockquote>
+<p>The reconciliation of <code>ClusterImportPolicy</code> and <code>PediaClusterLifecycle</code> is done by the <em>ClusterImportPolicy Controller</em> and <em>PediaClusterLifecycle Controller</em> within the <strong>Clusterpedia Controller Manager</strong></p>
+<p><code>ClusterImportPolicy</code> and <code>PediaClusterLifecycle</code> resource structures may be updated more frequently, so to avoid unnecessary impact on the <em>cluster.clusterpedia.io</em> group, they are placed in the <em>policy.clusterpedia.io</em> group.
+It may be migrated to <em>cluster.clusterpedia.io</em> in the future 1.0 release.</p>
+</blockquote>
+<h2 id=clusterimportpolicy>ClusterImportPolicy</h2>
+<p>An example of a complete <code>ClusterImportPolicy</code> resource is as follows:</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;cluster.example.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.authSecretRef.namespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.authSecretRef.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>authSecret</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;mcp-{{ .source.metadata.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>template</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    spec:
+</span><span style=color:#8f5902;font-style:italic>      apiserver: &#34;{{ .source.spec.apiEndpoint }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      caData: &#34;{{ .references.authSecret.data.ca }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      tokenData: &#34;{{ .references.authSecret.data.token }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      syncResources:
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;pods&#34;
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;apps&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>creationCondition</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    {{ if ne .source.spec.apiEndpoint &#34;&#34; }}
+</span><span style=color:#8f5902;font-style:italic>      {{ range .source.status.conditions }}
+</span><span style=color:#8f5902;font-style:italic>        {{ if eq .type &#34;Ready&#34; }}
+</span><span style=color:#8f5902;font-style:italic>          {{ if eq .status &#34;True&#34; }} true {{ end }}
+</span><span style=color:#8f5902;font-style:italic>        {{ end }}
+</span><span style=color:#8f5902;font-style:italic>      {{ end }}
+</span><span style=color:#8f5902;font-style:italic>    {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span></code></pre></div><p>There are these sections:</p>
+<ul>
+<li><code>spec.source</code> and <code>spec.references</code> define <strong>Source</strong> resource type and <strong>Reference</strong> resources</li>
+<li><code>spec.nameTemplate</code> defines the name of the generated <code>PediaClusterLifecycle</code> and <code>PediaCluster</code>, which can be rendered according to the <strong>Source</strong> resource.</li>
+<li><code>spec.template</code> and <code>spec.creationCondition</code> define the resource conversion policy.</li>
+</ul>
+<p><strong>Templates within references, template, and creationCondition all support the 70+ template functions provided by <a href=https://github.com/Masterminds/sprig>sprig</a></strong>, <a href=http://masterminds.github.io/sprig/>Sprig Function Documentation</a></p>
+<h2 id=source-and-references-resource>Source and References Resource</h2>
+<p>The first thing we need to define in the <code>ClusterImportPolicy</code> resource is the <strong>Source</strong> resource type and the <strong>Reference</strong> resources.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>multi-cluster-polatform</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;example.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>versions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>versions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.secretRef.namespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.secretRef.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secret</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The <strong>Source</strong> resource specifies the resource group and resource name via <code>spec.source.group</code> and <code>spec.source.resource</code>. We can also use <code>spec.source.versions</code> to restrict <strong>Source</strong> resource versions, by default there is no restriction on <strong>Source</strong> resource versions</p>
+<blockquote>
+<p><strong>A Source resource can only have one <code>ClusterImportPolicy</code> resource responsible for converting that resource</strong></p>
+</blockquote>
+<p><strong>source</strong> resources can be used for other template fields via <code>{{ .source.&lt;field> }}</code></p>
+<p>The resources involved in the conversion process are defined in <code>spec.references</code> and we need to specify the type of the resource and the specific <strong>reference</strong> resource via namespace and name templates. We can also restrict the version of the Reference resource in the same way as the <strong>Source</strong> resource.</p>
+<p>In addition to this, we need to set a key for the <strong>reference</strong> resource, which will be used by subsequent template fields as <code>{{ .references.&lt;key> }}</code></p>
+<p>*The later items in *<code>spec.references</code> can also refer to the earlier ones via <code>.references.&lt;key></code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>a.example.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>aresource</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.aNamespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.aName }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>refA</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>b.example.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>bresource</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .references.refA.spec.bNamespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .references.refA.spec.bName }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>refB</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><h2 id=pediaclusterlifecycle>PediaClusterLifecycle</h2>
+<p>When a <strong>Source</strong> is created, the <em>ClusterImportPolicy Controller</em> creates the corresponding <code>PediaClusterLifecycle</code> resource based on the <code>ClusterImportPolicy</code> resource.</p>
+<p>The name of the <code>PediaClusterLifecycle</code> resource is set via the <code>spec.nameTemplate</code> field of the <code>ClusterImportPolicy</code>.</p>
+<pre tabindex=0><code>apiVersion: policy.clusterpedia.io/v1alpha1
+kind: ClusterImportPolicy
+metadata:
+  name: multi-cluster-platform
+spec:
+  nameTemplate: &quot;mcp-{{ .source.metadata.namespace }}-{{ .source.metadata.name }}&quot;
+</code></pre><p>The nameTemplate can only render templates based on <strong>Source</strong> resources, and the field is usually set based on whether it is a Cluster Scoped resource.</p>
+<ul>
+<li><code>nameTemplate: "&lt;prefix>-{{ .source.metadata.namespace}}-{{ .source.metadata.name }}"</code></li>
+<li><code>nameTemplate: "&lt;prefix>-{{ .source.metadata.name }}"</code></li>
+</ul>
+<p>**nameTemplate is usually prefixed with a multi-cloud platform or other meaningful name, but can of course be set without a prefix. **</p>
+<p>The <code>PediaClusterLifecycle</code> sets the specific <strong>source</strong> resource and <strong>references</strong> resource and the conversion policy</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaClusterLifecycle</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>&lt;prefix&gt;-example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>example.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>version</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v1beta1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>namespace</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>version</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.secretRef.namespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.secretRef.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secret</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The <code>spec.source</code> of the <code>PediaClusterLifecycle</code> sets a specific <strong>Source</strong> resource, including the specific version, namespace and name of the resource.</p>
+<p><code>spec.references</code> contains the specific resource version compared to <code>ClusterImportPolicy</code>, the other fields are the same as the References definition within <code>ClusterImportPolicy</code>.</p>
+<p>The namespace and name of the references resource will be resolved when converting the resource.</p>
+<h3 id=pediaclusterlifecycle-和-pediacluster>PediaClusterLifecycle 和 PediaCluster</h3>
+<p>The name of <code>PediaClusterLifecycle</code> corresponds to <code>PediaCluster</code>, and <code>PediaClusterLifecycle</code> creates and updates <code>PediaCluster</code> with the same name according to the conversion policy.</p>
+<h2 id=pediacluster-convertion-policy>PediaCluster Convertion Policy</h2>
+<p>We focus on the following aspects when defining the conversion policy:</p>
+<ul>
+<li>the template used to create or update the <code>PediaCluster</code></li>
+<li>When to trigger the creation of a `PediaCluster</li>
+</ul>
+<p>In <code>ClusterImportPolicy</code>, we use <code>spec.template</code> and <code>spec.creationCondition</code> to define them</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>...</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>other fields</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>template</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    spec:
+</span><span style=color:#8f5902;font-style:italic>      apiserver: &#34;{{ .source.spec.apiEndpoint }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      caData: &#34;{{ .references.authSecret.data.ca }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      tokenData: &#34;{{ .references.tokenData.data.token }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      syncResources:
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;pods&#34;
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;apps&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>creationCondition</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    {{ if ne .source.spec.apiEndpoint &#34;&#34; }}
+</span><span style=color:#8f5902;font-style:italic>      {{ range .source.status.conditions }}
+</span><span style=color:#8f5902;font-style:italic>        {{ if eq .type &#34;Ready&#34; }}
+</span><span style=color:#8f5902;font-style:italic>          {{ if eq .status &#34;True&#34; }} true {{ end }}
+</span><span style=color:#8f5902;font-style:italic>        {{ end }}
+</span><span style=color:#8f5902;font-style:italic>      {{ end }}
+</span><span style=color:#8f5902;font-style:italic>    {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span></code></pre></div><p>Both of these fields are template fields that need to be rendered based on <strong>Source</strong> resource and <strong>References</strong> resources.</p>
+<p>When the <strong>Source</strong> resource is created, the <strong>ClusterImportPolicy Controller</strong> will create the corresponding <code>PediaClusterLifecycle</code> based on the <code>ClusterImportPolicy</code>, and the <code>PediaClusterLifecycle</code> will will also contain the conversion policy.</p>
+<blockquote>
+<p>Of course, if the policy in <code>ClusterImportPolicy</code> is modified, it will be synchronized to all <code>PediaClusterLifecycle</code> resources it belongs to.</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp-example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>...</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>other fields</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>template</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    spec:
+</span><span style=color:#8f5902;font-style:italic>      apiserver: &#34;{{ .source.spec.apiEndpoint }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      caData: &#34;{{ .references.authSecret.data.ca }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      tokenData: &#34;{{ .references.tokenData.data.token }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      syncResources:
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;pods&#34;
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;apps&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>creationCondition</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    {{ if ne .source.spec.apiEndpoint &#34;&#34; }}
+</span><span style=color:#8f5902;font-style:italic>      {{ range .source.status.conditions }}
+</span><span style=color:#8f5902;font-style:italic>        {{ if eq .type &#34;Ready&#34; }}
+</span><span style=color:#8f5902;font-style:italic>          {{ if eq .status &#34;True&#34; }} true {{ end }}
+</span><span style=color:#8f5902;font-style:italic>        {{ end }}
+</span><span style=color:#8f5902;font-style:italic>      {{ end }}
+</span><span style=color:#8f5902;font-style:italic>    {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span></code></pre></div><p>PediaClusterLifecycle<code>is responsible for creating and updating specific</code>PediaClusters<code>based on</code>spec.creationCondition<code>and</code>spec.template`.</p>
+<h3 id=creation-condition>Creation Condition</h3>
+<p>Sometimes we don&rsquo;t create a <code>PediaCluster</code> immediately after a <strong>Source</strong> resource is created, but rather we need to wait until some fields or some state of the <strong>Source</strong> resource is ready before creating the <code>PediaCluster</code>.</p>
+<p><code>spec.creationCondition</code> uses the template syntax to determine if the creation condition is met,
+and when the template is rendered with a value of <code>True</code> (case insensitive) then <code>PediaCluster</code> is created according to `spec.</p>
+<p>If the <code>PediaCluster</code> already exists, <code>spec.creationCondition</code> will not affect updates to the <code>PediaCluster</code>.</p>
+<h3 id=pediacluster-template>PediaCluster Template</h3>
+<p><code>spec.template</code> defines a <code>PediaCluster</code> resource template that renders specific resources based on <strong>Source</strong> resource and <strong>References</strong> resources when creating or updating a <code>PediaCluster</code>.</p>
+<p>The <code>PediaCluster</code> template can be separated into three parts.</p>
+<ul>
+<li>Metadata: labels and annotations</li>
+<li>Cluster endpoint and authentication fields: <code>spec.apiserver</code>, <code>spec.caData</code>, <code>spec.tokenData</code>, <code>spec.certData</code>, <code>spec.keyData</code> and <code>spec.kubeconfig</code></li>
+<li>Resource sync fields: <code>spec.syncResources</code>, <code>spec.syncAllCustomResources</code>, <code>spec.syncResourcesRefName</code></li>
+</ul>
+<p>The <strong>metadata</strong> and <strong>resource sync fields</strong> of the <code>PediaCluster</code> resource are only available when the PediaCluser is created, and only the <strong>cluster endpoint and authentication fields</strong> are updated when the <code>PediaCluster</code> resource is updated</p>
+<h3 id=pediacluster-deletion-condition>PediaCluster Deletion Condition</h3>
+<p>If a <code>PediaCluster</code> is created by <code>PediaClusterLifecycle</code>, then <code>PediaClusterLifecycle</code> will be set to the owner of that <code>PediaCluster</code> resource.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaCluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp-example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>ownerReferences</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaClusterLifecycle</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp-example</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>uid</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>f932483a-b1c5-4894-a524-00f78ea34a9f</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>When a <strong>Source</strong> resource is deleted, the <code>PediaClusterLifecycle</code> is deleted at the same time and the <code>PediaCluster</code> is deleted automatically.</p>
+<p>If <code>PediaCluster</code> already existed before <code>PediaClusterLifecycle</code>, then <strong>Source</strong> will not automatically delete <code>PediaCluster</code> when it is deleted.</p>
+<p>DeletionCondition will be added in the future to allow users to force or preempt the deletion of <code>PediaCluster</code>.</p>
 </div>
 <div class=td-content style=page-break-before:always>
 <h1 id=pg-ec5a5e9379174e59d723f74f5206953c>3 - Usage</h1>
@@ -548,7 +899,157 @@ cluster-2      https://10.50.10.11:16443   v1.10.11   Healthy
 <p>See <a href=../sync-resources>Synchronize Cluster Resources</a></p>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-64bebf7ca20899cc843d095cee1d0313>3.2 - Synchronize Cluster Resources</h1>
+<h1 id=pg-3fe23ba64b8bbae5fab0c8696ae005cb>3.2 - Interfacing to Multi-Cloud Platforms</h1>
+<p>After 0.4.0, Clusterpedia provides a more friendly way to interface to multi-cloud platforms.</p>
+<p>Users can create <code>ClusterImportPolicy</code> to automatically discover managed clusters in the multi-cloud platform and automatically synchronize them as <code>PediaCluster</code>,
+so you don&rsquo;t need to maintain <code>PediaCluster</code> manually based on the managed clusters.</p>
+<p>We maintain <code>PediaCluster</code> for each multi-cloud platform in the <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/deploy/clusterimportpolicy>Clusterpedia repository</a>. ClusterImportPolicy` for each multi-cloud platform.
+<strong>People also submit ClusterImportPolicy to Clusterpedia for interfacing to other multi-cloud platforms.</strong></p>
+<p>After <a href=../../installation>installing Clusterpedia</a>, you can create the appropriate <code>ClusterImportPolicy</code>,
+or you can <a href=#new-clusterimportpolicy>create a new <code>ClusterImportPolicy</code></a> according to your needs (multi-cloud platform).</p>
+<h2 id=clusterapi-clusterimportpolicy>ClusterAPI ClusterImportPolicy</h2>
+<p>Users can refer to <a href=https://cluster-api.sigs.k8s.io/user/quick-start.html>Cluster API Quick Start</a> to install the Cluster API，or refer to <a href=https://clusterpedia.io/zh-cn/blog/2022/08/04/cluster-api-searching-has-never-been-easier#quickly-deploy-a-sample-environment-for-cluster-api-and-clusterpedia>Quickly deploy Cluster API + Clusterpedia</a> to deploy a sample environment.</p>
+<p>Create <code>ClusterImportPolicy</code> for interfacing to the ClusterAPI platform.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl applyf -f https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/main/deploy/clusterimportpolicy/cluster_api.yaml
+$ kubectl get clusterimportpolicy
+NAME          AGE
+cluster-api   4d19h
+</code></pre></div><p>If the clusters created by the ClusterAPI already exists in the management cluster, then you can view the <code>Cluster</code> and <code>PediaCluster</code> resources.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get cluster
+NAME                PHASE         AGE     VERSION
+capi-quickstart     Provisioned   3d23h   v1.24.2
+capi-quickstart-2   Provisioned   3d23h   v1.24.2
+
+$ kubectl get pediaclusterlifecycle
+NAME                        AGE
+default-capi-quickstart     3d23h
+default-capi-quickstart-2   3d23h
+
+$ kubectl get pediacluster
+NAME                        READY   VERSION   APISERVER
+default-capi-quickstart     True    v1.24.2
+default-capi-quickstart-2   True    v1.24.2
+</code></pre></div><p><a href=../../concepts/pediacluster>PediaCluster</a> is automatically created based on the Cluster, and the kubeconfig of <a href=../../concepts/pediacluster>PediaCluster</a> is automatically updated when the kubeconfig of the Cluster changes.</p>
+<p>When creating a new Cluster, Clusterpedia automatically creates a PediaCluster when <strong>ControlPlaneInitialized</strong> is True according to the <a href=https://github.com/clusterpedia-io/clusterpedia/blob/main/deploy/clusterimportpolicy/cluster_api.yaml>Cluster API ClusterImportPolicy</a>,
+and you can check the initialization status of the cluster by using <code>kubectl get kubeadmcontrolplane</code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>NAME                    CLUSTER           INITIALIZED   API SERVER AVAILABLE   REPLICAS   READY   UPDATED   UNAVAILABLE   AGE   VERSION
+capi-quickstart-2xcsz   capi-quickstart   <span style=color:#204a87>true</span>                                 <span style=color:#0000cf;font-weight:700>1</span>                  <span style=color:#0000cf;font-weight:700>1</span>         <span style=color:#0000cf;font-weight:700>1</span>             86s   v1.24.2
+</code></pre></div><p>Once the Cluster has been initialized, you can use kubectl to retrieve multiple cluster resources directly.</p>
+<blockquote>
+<p>Beforing using kubectl, you need to <a href=../access-clusterpedia/#configure-the-cluster-shortcut-for-kubectl>generate cluster shortcut configuration</a> for multi-cluster resource retrieval.</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#8f5902;font-style:italic># Since CNI is not installed, the nodes are not ready.</span>
+$ kubectl --cluster clusterpedia get no
+CLUSTER                     NAME                                            STATUS     ROLES           AGE   VERSION
+default-capi-quickstart-2   capi-quickstart-2-ctm9k-g2m87                   NotReady   control-plane   12m   v1.24.2
+default-capi-quickstart-2   capi-quickstart-2-md-0-s8hbx-7bd44554b5-kzcb6   NotReady   &lt;none&gt;          11m   v1.24.2
+default-capi-quickstart     capi-quickstart-2xcsz-fxrrk                     NotReady   control-plane   21m   v1.24.2
+default-capi-quickstart     capi-quickstart-md-0-9tw2g-b8b4f46cf-gggvq      NotReady   &lt;none&gt;          20m   v1.24.2
+</code></pre></div><h2 id=karmada-clusterimportpolicy>Karmada ClusterImportPolicy</h2>
+<blockquote>
+<p>For Karmada platform, you need to first deploy Clusterpedia in Karmada APIServer, the deployment steps can be found at <a href=https://github.com/Iceber/deploy-clusterpedia-to-karmada>https://github.com/Iceber/deploy-clusterpedia-to-karmada</a></p>
+</blockquote>
+<p>Create <code>ClusterImportPolicy</code> for interfacing to the Karmada platform.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl create -f https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/main/deploy/clusterimportpolicy/karmada.yaml
+$ kubectl get clusterimportpolicy
+NAME      AGE
+karmada   7d5h
+</code></pre></div><p>View <code>Karmada Cluster</code> and <code>PediaClusterLifecycle</code> resources.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get cluster
+NAME      VERSION   MODE   READY   AGE
+argocd              Push   False   8d
+member1   v1.23.4   Push   True    22d
+member3   v1.23.4   Pull   True    22d
+$ kubectl get pediaclusterlifecycle
+NAME              AGE
+karmada-argocd    7d5h
+karmada-member1   7d5h
+karmada-member3   7d5h
+</code></pre></div><p>Clusterpedia creates a corresponding <code>PediaClusterLifecycle</code> for each Karmada Cluster,
+and you can use <code>kubectl describe pediaclusterlifecycle &lt;name></code> to see the status of the transition between Karmada Cluster and PediaCluster resources.</p>
+<blockquote>
+<p>The status will be detailed in <code>kubectl get pediaclusterlifecycle</code> in the future</p>
+</blockquote>
+<p>View the successfully created <code>PediaCluster</code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>NAME              APISERVER                 VERSION   STATUS
+karmada-member1   https://172.18.0.4:6443   v1.23.4   Healthy
+</code></pre></div><p>The karmada clusterimportpolicy requires the karmada cluster to be in Push mode and in Ready state,
+so the <em>karmada-member-1</em> pediacluster resource is created for the <em>member-1</em> cluster.</p>
+<h2 id=new-clusterimportpolicy>New ClusterImportPolicy</h2>
+<p>If the <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/deploy/clusterimportpolicy>Clusterpedia repository</a> does not maintain a ClusterImportPolicy for a platform, then we can create a new ClusterImportPolicy</p>
+<p><strong>A detailed description of the <code>ClusterImportPolicy</code> principles and fields can be found in the <a href=../../concepts/cluster-import-policy>Cluster Auto Import Policy</a></strong></p>
+<p>Now assume that there is a multi-cloud platform <strong>MCP</strong> that uses a custom resource &ndash; Cluster to represent the managed clusters
+and stores the cluster authentication information in a Secret with the same name as the cluster</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.mcp.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Cluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster-1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>apiEndpoint</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;https://172.10.10.10:6443&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>authSecretRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>namespace</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;default&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;cluster-1&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>status</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>conditions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>type</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Ready</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>status</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>True</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>---</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>Secret</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster-1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>data</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>ca</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#8f5902;font-style:italic>**cluster</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ca bundle**</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>token</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#8f5902;font-style:italic>**cluster</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>token**</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>We define a <code>ClusterImportPolicy</code> resource for the <strong>MCP</strong> platform and synchronize the pods resource and all resources under the apps group by default.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mcp</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;cluster.mcp.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>versions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>versions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>namespaceTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.authSecretRef.namespace }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;{{ .source.spec.authSecretRef.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>authSecret</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>nameTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;mcp-{{ .source.metadata.name }}&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>template</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    spec:
+</span><span style=color:#8f5902;font-style:italic>      apiserver: &#34;{{ .source.spec.apiEndpoint }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      caData: &#34;{{ .references.authSecret.data.ca }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      tokenData: &#34;{{ .references.authSecret.data.token }}&#34;
+</span><span style=color:#8f5902;font-style:italic>      syncResources:
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;pods&#34;
+</span><span style=color:#8f5902;font-style:italic>        - group: &#34;apps&#34;
+</span><span style=color:#8f5902;font-style:italic>          resources:
+</span><span style=color:#8f5902;font-style:italic>          - &#34;*&#34;
+</span><span style=color:#8f5902;font-style:italic>      syncResourcesRefName: &#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>creationCondition</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    {{ if ne .source.spec.apiEndpoint &#34;&#34; }}
+</span><span style=color:#8f5902;font-style:italic>      {{ range .source.status.conditions }}
+</span><span style=color:#8f5902;font-style:italic>        {{ if eq .type &#34;Ready&#34; }}
+</span><span style=color:#8f5902;font-style:italic>          {{ if eq .status &#34;True&#34; }} true {{ end }}
+</span><span style=color:#8f5902;font-style:italic>        {{ end }}
+</span><span style=color:#8f5902;font-style:italic>      {{ end }}
+</span><span style=color:#8f5902;font-style:italic>    {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span></code></pre></div><ul>
+<li><code>spec.source</code> defines the resource Cluster that needs to be watched to</li>
+<li><code>spec.preferences</code> defines the resources involved in converting an MCP Cluster to a PediaCluster, currently only secrets resources are used</li>
+<li><code>spec.nameTemplate</code> will render the name of the PediaCluster resource based on the MCP Cluster resource</li>
+<li><code>spec.template</code> renders the PediaCluster resource from the resources defined in MCP Cluster and <code>spec.references</code>, see <a href=../../concepts/cluster-import-policy#pediacluster-template>PediaCluster Template</a> for rules</li>
+<li><code>spec.creationCondition</code> determines when a PediaCluster can be created based on the resources defined by the MCP Cluster and <code>spec.references</code>, here it defines when the MCP Cluster is Ready before creating the PediaCluster. See <a href=../../concepts/cluster-import-policy#creation-condition>Creation Condition</a> for details</li>
+</ul>
+</div>
+<div class=td-content style=page-break-before:always>
+<h1 id=pg-64bebf7ca20899cc843d095cee1d0313>3.3 - Synchronize Cluster Resources</h1>
 <p>The main function of Clusterpedia is to provide complex search for resources in multiple clusters.</p>
 <p>Clusterpedia uses the <code>PediaCluster</code> resource to specify which resources in the cluster need to support complex search,
 and synchronizes these resources onto the <code>Storage Component</code> via <code>Storage Layer</code> in real time.</p>
@@ -684,6 +1185,35 @@ we can set <code>spec.syncAllCustomResources</code> to sync all custom resources
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#4e9a06>&#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span></code></pre></div><p>The <code>All-resources Wildcard</code> allows we to sync built-in resources, custom resources and aggregated API resources in the imported cluster.</p>
 <p>This feature creates a large number of long connections, so use it with caution and enable the corresponding Feature Gate in the <code>clustersynchro-manager</code>, as described in <a href=../../features/sync-all-resources>Sync All Resources</a></p>
+<h2 id=reference-clustersyncresources>Reference ClusterSyncResources</h2>
+<p><code>ClusterSyncResources</code> is used to define cluster resource synchronization configurations that are commonly referenced by multiple PediaClusters, see <a href=../../concepts/cluster-sync-resources>Public Configuration of Cluster Sync Resources</a> for more information about <code>ClusterSyncResources</code></p>
+<p><strong>PediaCluster</strong> sets the referenced <code>ClusterSyncResources</code> by <code>spec.syncResourceRefName</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterSyncResources</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>global-base</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>pods</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;apps&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#4e9a06>&#34;*&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>---</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>cluster.clusterpedia.io/v1alpha2</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>PediaCluster</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>demo1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResourcesRefName</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;global-base&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>syncResources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resources</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>pods</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>configmaps</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>If <strong>PediaCluster</strong> has both <code>spec.syncResourcesRefName</code> and <code>spec.syncResources</code> set, then the concatenation of the two will be used.</p>
+<p>In the above example, clusterpedia synchronizes the pods and configmaps resources, and all resources under the apps group in the <em>demo1</em> cluster.</p>
 <h2 id=view-synchronized-resources>View synchronized resources</h2>
 <p>You can view resources, sync versions, and storage versions by using <code>Status</code> of the <code>PediaCluster</code> resource.</p>
 <p>For <code>Status</code>, a resource may have <strong>Sync Version</strong> and <strong>Storage Version</strong>:</p>
@@ -723,11 +1253,12 @@ we can set <code>spec.syncAllCustomResources</code> to sync all custom resources
 <p>After resource synchronization, you can <a href=../access-clusterpedia>Access the Clusterpedia</a> to <a href=../search>Search for Resources</a></p>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-bbba5e1deb968130546edf7495679ad0>3.3 - Access the Clusterpedia</h1>
+<h1 id=pg-bbba5e1deb968130546edf7495679ad0>3.4 - Access the Clusterpedia</h1>
 <p>Clusterpedia has two main components:</p>
 <ul>
 <li><code>ClusterSynchroManager</code> manages the <code>PediaCluster</code> resource in the <em>master cluster</em>, connects to the specified cluster through the <code>PediaCluster</code> authentication information, and synchronizes the corresponding resources in real time.</li>
 <li><code>APIServer</code> also listens to the <code>PediaCluster</code> resource in the <em>master cluster</em> and provides complex search for resources in a <strong>compatible Kubernetes OpenAPI</strong> manner based on the resources synchronized by the cluster.</li>
+<li><code>Controller Manager</code></li>
 </ul>
 <p>Also, the <code>Clusterpedia APIServer</code> will be registered to the <em>master cluster</em> APIServer in the way of <a href=https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation>Aggregation API</a>, so that we can access Clusterpedia through the same entry as the master cluster.</p>
 <h2 id=resources-and-collection-resourceconceptscollection-resource>Resources and <a href=../../concepts/collection-resource>Collection Resource</a></h2>
@@ -757,7 +1288,7 @@ resources                          clusterpedia.io/v1beta1    false        Resou
 <h3 id=configure-the-cluster-shortcut-for-kubectl>Configure the cluster shortcut for kubectl</h3>
 <p>Although we can use URLs to access Clusterpedia resources, if we want to use kubectl to query more conveniently, we need to configure the kubeconfig cluster.</p>
 <p>Clusterpedia provides a simple script to generate <code>cluster config</code> in the kubeconfig.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/v0.3.0/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/v0.4.1/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
 </code></pre></div><pre tabindex=0><code># Output:
 Current Context: kubernetes-admin@kubernetes
 Current Cluster: kubernetes
@@ -891,7 +1422,7 @@ issuers                    cert-manager.io/v1   true         Issuer
 </code></pre></div></div>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-48ab5663f4f8c240e7bf89c5454f249f>3.4 - Search</h1>
+<h1 id=pg-48ab5663f4f8c240e7bf89c5454f249f>3.5 - Search</h1>
 <p>Clusterpedia supports complex search for <a href=multi-cluster>multi-cluster resources</a>, <a href=specified-cluster>specified cluster resoruces</a>, and <a href=collection-resource>Collection Resources</a>.</p>
 <p>And these complex search conditions can be passed to <code>Clusterpedia APIServer</code> in two ways:</p>
 <ul>
@@ -1156,9 +1687,37 @@ using a left-closed, right-open internval.</p>
 </table>
 <p>Custom search is not supported by <em>search label</em>, only <em>url query</em> can be used to pass custom search SQL.</p>
 <p>In addition, this feature is still in alpha stage, you need to open the corresponding Feature Gate in <code>clusterpedia apiserver</code>, for details, please refer to <a href=../../features/raw-sql-query>Raw SQL Query</a></p>
+<h2 id=collectionresource-url-query>CollectionResource URL Query</h2>
+<p>The following URL Query belongs exclusively to Collection Resource.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>url query</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href=collection-resource#only-metadata>get only the metadata of the resource</a></td>
+<td><code>onlyMetadata</code></td>
+<td><em>onlyMetadata=true</em></td>
+</tr>
+<tr>
+<td><a href=collection-resource#any-collectionresource>specify the groups of <code>any collectionresource</code></a></td>
+<td><code>groups</code></td>
+<td><em>groups=apps,cert-manager.io/v1</em></td>
+</tr>
+<tr>
+<td><a href=collection-resource#any-collectionresource>specify the resources of <code>any collectionresource</code></a></td>
+<td><code>resources</code></td>
+<td><em>resources=apps/deployments,batch/v1/cronjobs</em></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-ec8e2360424d04fb82dc27fbc4824983>3.4.1 - Multiple Clusters</h1>
+<h1 id=pg-ec8e2360424d04fb82dc27fbc4824983>3.5.1 - Multiple Clusters</h1>
 <p>Multi-cluster resource search allows us to <strong>filter resources in multiple clusters at once based on query criteria, and provides the ability to paginate and sort these resources</strong>.</p>
 <p>When using <code>kubectl</code>, we can see what resources are currently available for search</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl --cluster clusterpedia api-resources
@@ -1443,7 +2002,7 @@ which means that <code>search.clusterpedia.io/size</code> does not actually take
 </div></div>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-d30ab8cb55be590100ae14cd7d8c1d47>3.4.2 - Specified a Cluster</h1>
+<h1 id=pg-d30ab8cb55be590100ae14cd7d8c1d47>3.5.2 - Specified a Cluster</h1>
 <p>In addition to searching in multiple clusters, Clusterpedia can also search for resources in a specified cluster.</p>
 <blockquote>
 <p>Using <a href=../#search-by-metadata><code>Search Label</code></a> or <a href=../#search-by-metadata><code>URL Query</code></a> to specify a single cluster is not different from specifying a cluster in URL Path in terms of performance</p>
@@ -1571,7 +2130,7 @@ kubectl --cluster clusterpedia get deploy -l
 </code></pre></div></div></div>
 </div>
 <div class=td-content style=page-break-before:always>
-<h1 id=pg-83e3a820b19f3a40c674f197775a60c8>3.4.3 - Collection Resource</h1>
+<h1 id=pg-83e3a820b19f3a40c674f197775a60c8>3.5.3 - Collection Resource</h1>
 <p>For collection resource, refer to <a href=../../../concepts/collection-resource>What is Collection Resource</a></p>
 <p>Due to the limitation of kubectl, we cannot pass search conditions through <code>Label Selector</code> or other methods, so <strong>it is recommended to search for <code>Collection Resource</code></strong> by using a URL.</p>
 <ul class="nav nav-tabs" id=tabset-docsusagesearchcollection-resource-1 role=tablist><li class=nav-item><a data-toggle=tab class="nav-link active" href=#tabset-docsusagesearchcollection-resource-1-0 role=tab aria-controls=tabset-docsusagesearchcollection-resource-1-0 aria-selected=true>URL</a></li>
@@ -1635,6 +2194,70 @@ cluster-2   apps    v1        Deployment   kube-system                   coredns
 ...
 </code></pre><p><strong>Search for <code>Collection Resource</code> by using URL</strong></p>
 </div></div>
+<h2 id=only-metadata>Only Metadata</h2>
+<p>When we retrieve a CollectionResource, the default resource is the full resource content, but sometimes we just need to retrieve the metadata of the resource.</p>
+<p>We can use url query &ndash; <code>onlyMetadata</code> to retrieve only the resource metadata when retrieving.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get --raw <span style=color:#4e9a06>&#34;/apis/clusterpedia.io/v1beta1/collectionresources/workloads?onlyMetadata=true&amp;limit=1&#34;</span> <span style=color:#000;font-weight:700>|</span> jq
+<span style=color:#ce5c00;font-weight:700>{</span>
+  <span style=color:#4e9a06>&#34;kind&#34;</span>: <span style=color:#4e9a06>&#34;CollectionResource&#34;</span>,
+  <span style=color:#4e9a06>&#34;apiVersion&#34;</span>: <span style=color:#4e9a06>&#34;clusterpedia.io/v1beta1&#34;</span>,
+  <span style=color:#4e9a06>&#34;metadata&#34;</span>: <span style=color:#ce5c00;font-weight:700>{</span>
+    <span style=color:#4e9a06>&#34;name&#34;</span>: <span style=color:#4e9a06>&#34;workloads&#34;</span>,
+    <span style=color:#4e9a06>&#34;creationTimestamp&#34;</span>: null
+  <span style=color:#ce5c00;font-weight:700>}</span>,
+  <span style=color:#4e9a06>&#34;resourceTypes&#34;</span>: <span style=color:#ce5c00;font-weight:700>[</span>
+    <span style=color:#ce5c00;font-weight:700>{</span>
+      <span style=color:#4e9a06>&#34;group&#34;</span>: <span style=color:#4e9a06>&#34;apps&#34;</span>,
+      <span style=color:#4e9a06>&#34;version&#34;</span>: <span style=color:#4e9a06>&#34;v1&#34;</span>,
+      <span style=color:#4e9a06>&#34;kind&#34;</span>: <span style=color:#4e9a06>&#34;Deployment&#34;</span>,
+      <span style=color:#4e9a06>&#34;resource&#34;</span>: <span style=color:#4e9a06>&#34;deployments&#34;</span>
+    <span style=color:#ce5c00;font-weight:700>}</span>
+  <span style=color:#ce5c00;font-weight:700>]</span>,
+  <span style=color:#4e9a06>&#34;items&#34;</span>: <span style=color:#ce5c00;font-weight:700>[</span>
+    <span style=color:#ce5c00;font-weight:700>{</span>
+      <span style=color:#4e9a06>&#34;apiVersion&#34;</span>: <span style=color:#4e9a06>&#34;apps/v1&#34;</span>,
+      <span style=color:#4e9a06>&#34;kind&#34;</span>: <span style=color:#4e9a06>&#34;Deployment&#34;</span>,
+      <span style=color:#4e9a06>&#34;metadata&#34;</span>: <span style=color:#ce5c00;font-weight:700>{</span>
+        <span style=color:#4e9a06>&#34;annotations&#34;</span>: <span style=color:#ce5c00;font-weight:700>{</span>
+          <span style=color:#4e9a06>&#34;deployment.kubernetes.io/revision&#34;</span>: <span style=color:#4e9a06>&#34;1&#34;</span>,
+          <span style=color:#4e9a06>&#34;shadow.clusterpedia.io/cluster-name&#34;</span>: <span style=color:#4e9a06>&#34;cluster-example&#34;</span>
+        <span style=color:#ce5c00;font-weight:700>}</span>,
+        <span style=color:#4e9a06>&#34;creationTimestamp&#34;</span>: <span style=color:#4e9a06>&#34;2021-09-24T10:19:19Z&#34;</span>,
+        <span style=color:#4e9a06>&#34;generation&#34;</span>: 1,
+        <span style=color:#4e9a06>&#34;labels&#34;</span>: <span style=color:#ce5c00;font-weight:700>{</span>
+          <span style=color:#4e9a06>&#34;k8s-app&#34;</span>: <span style=color:#4e9a06>&#34;tigera-operator&#34;</span>
+        <span style=color:#ce5c00;font-weight:700>}</span>,
+        <span style=color:#4e9a06>&#34;name&#34;</span>: <span style=color:#4e9a06>&#34;tigera-operator&#34;</span>,
+        <span style=color:#4e9a06>&#34;namespace&#34;</span>: <span style=color:#4e9a06>&#34;tigera-operator&#34;</span>,
+        <span style=color:#4e9a06>&#34;resourceVersion&#34;</span>: <span style=color:#4e9a06>&#34;125073610&#34;</span>,
+        <span style=color:#4e9a06>&#34;uid&#34;</span>: <span style=color:#4e9a06>&#34;992f9d53-37cb-4184-a004-15b278b11f79&#34;</span>
+      <span style=color:#ce5c00;font-weight:700>}</span>
+    <span style=color:#ce5c00;font-weight:700>}</span>
+  <span style=color:#ce5c00;font-weight:700>]</span>
+<span style=color:#ce5c00;font-weight:700>}</span>
+</code></pre></div><h2 id=any-collectionresource>Any CollectionResource</h2>
+<blockquote>
+<p><code>any collectionresource</code> is one of the ways that users can freely combine resource types with <a href=../../../concepts/collection-resource#custom-collection-resource>custom collection resources</a> to see more.</p>
+</blockquote>
+<p>clusterpedia supports a special CollectionResource —— <code>any</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get collectionresources
+NAME            RESOURCES
+any             *
+</code></pre></div><p>When retrieving <code>any collectionresource</code>, we must specify a set of resource types by url query, so we can only retrieve <code>any collectionresource</code> via <a href=https://github.com/clusterpedia-io/client-go/pull/43>clusterpedia-io/client-go</a> or URL.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get collectionresources any
+Error from server <span style=color:#ce5c00;font-weight:700>(</span>BadRequest<span style=color:#ce5c00;font-weight:700>)</span>: url query - <span style=color:#4e9a06>`</span>groups<span style=color:#4e9a06>`</span> or <span style=color:#4e9a06>`</span>resources<span style=color:#4e9a06>`</span> is required
+</code></pre></div><p><code>any collectionresource</code> supports two url queries —— <code>groups</code> and <code>resources</code></p>
+<p><strong><code>groups</code> and <code>resources</code> can be specified together, currently they are taken together and are not de-duplicated, the caller is responsible for de-duplication</strong>,
+there are some future optimizations for this behavior.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get --raw <span style=color:#4e9a06>&#34;/apis/clusterpedia.io/v1beta1/collectionresources/any?onlyMetadata=true&amp;groups=apps&amp;resources=batch/jobs,batch/cronjobs&#34;</span> <span style=color:#000;font-weight:700>|</span> jq
+</code></pre></div><h4 id=groups>groups</h4>
+<p><code>groups</code> can specify a group and version of a set of resources, with multiple group versions separated by <code>,</code>,</p>
+<p>the group version format is <strong>&lt; group >/&lt; version ></strong>, or no version can be specified <strong>&lt; group ></strong>, <em>for resources under /api, you can just use the empty string</em>.</p>
+<p><strong>Example</strong>: <strong>groups=apps/v1,,batch</strong> specifies three groups apps/v1, core, batch.</p>
+<h4 id=resources>resources</h4>
+<p><code>resources</code> can specify a specific resource type, multiple resource types are separated by <code>,</code>,</p>
+<p>the resource type format is <strong>&lt; group >/&lt; version >/&lt; resource></strong>, by also not specifying the version <strong>&lt; group >/&lt; resource ></strong>.</p>
+<p><strong>Example</strong>: <strong>resources=apps/v1/deployments,apps/daemonsets,/pods</strong> specifies three resources deloyments, daemonsets and pods.</p>
 </div>
 <div class=td-content style=page-break-before:always>
 <h1 id=pg-56dc2b1c45b2c6b0983526530ba75d01>4 - Features</h1>
