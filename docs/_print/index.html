@@ -65,7 +65,7 @@ English
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.a033e2147e662dcd846e6a9818ecd990.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.465ee6196c51634c70402cc2e77c0900.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -146,7 +146,7 @@ This is the multi-page printable view of this section.
 <p>Pull clusterpedia project:</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/clusterpedia-io/clusterpedia.git
 <span style=color:#204a87>cd</span> clusterpedia
-git checkout v0.4.1
+git checkout v0.5.0
 </code></pre></div><h3 id=install-storage-component>Install storage component</h3>
 <p>Clusterpedia installation provides two storage components (<strong>MySQL 8.0</strong> and <strong>PostgreSQL 12</strong>) to choose.</p>
 <blockquote>
@@ -224,7 +224,6 @@ rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 </div>
 <div class=td-content style=page-break-before:always>
 <h1 id=pg-8aa1a9a3bda410f713c9c386ab4e389b>1.2 - Helm</h1>
-<p>How to install by Helm is in the process of developing, refer to <a href=https://github.com/clusterpedia-io/clusterpedia/issues/43>clusterpedia required helm deployment</a></p>
 </div>
 <div class=td-content style=page-break-before:always>
 <h1 id=pg-be1d3247596952e01a50b42f0b830dac>1.3 - Configuration</h1>
@@ -612,6 +611,7 @@ It may be migrated to <em>cluster.clusterpedia.io</em> in the future 1.0 release
 </span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;cluster.example.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>selectorTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
@@ -657,6 +657,8 @@ It may be migrated to <em>cluster.clusterpedia.io</em> in the future 1.0 release
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;example.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusters</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>versions</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>[]</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>selectorTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      </span><span style=color:#f8f8f8;text-decoration:underline>      </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>if eq .source.metadata.namespace &#34;default&#34; }} true {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>references</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>    </span>- <span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
 </span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
@@ -668,7 +670,22 @@ It may be migrated to <em>cluster.clusterpedia.io</em> in the future 1.0 release
 <blockquote>
 <p><strong>A Source resource can only have one <code>ClusterImportPolicy</code> resource responsible for converting that resource</strong></p>
 </blockquote>
-<p><strong>source</strong> resources can be used for other template fields via <code>{{ .source.&lt;field> }}</code></p>
+<p>You can also filter the <strong>Source</strong> by the <code>spec.source.selectorTemplate</code> field.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>policy.clusterpedia.io/v1alpha1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ClusterImportPolicy</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>kubevela</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>source</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>group</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>resource</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>secrets</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>selectorTemplate</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>      {{ if eq .source.metadata.namespace &#34;vela-system&#34; }}
+</span><span style=color:#8f5902;font-style:italic>        {{ if .source.metadata.labels }}
+</span><span style=color:#8f5902;font-style:italic>          {{ eq (index .source.metadata.labels &#34;cluster.core.oam.dev/cluster-credential-type&#34;) &#34;X509Certificate&#34; }}
+</span><span style=color:#8f5902;font-style:italic>        {{ end }}
+</span><span style=color:#8f5902;font-style:italic>      {{ end }}</span><span style=color:#f8f8f8;text-decoration:underline>      
+</span></code></pre></div><p><strong>source</strong> resources can be used for other template fields via <code>{{ .source.&lt;field> }}</code></p>
 <p>The resources involved in the conversion process are defined in <code>spec.references</code> and we need to specify the type of the resource and the specific <strong>reference</strong> resource via namespace and name templates. We can also restrict the version of the Reference resource in the same way as the <strong>Source</strong> resource.</p>
 <p>In addition to this, we need to set a key for the <strong>reference</strong> resource, which will be used by subsequent template fields as <code>{{ .references.&lt;key> }}</code></p>
 <p>*The later items in *<code>spec.references</code> can also refer to the earlier ones via <code>.references.&lt;key></code></p>
@@ -975,7 +992,80 @@ and you can use <code>kubectl describe pediaclusterlifecycle &lt;name></code> to
 karmada-member1   https://172.18.0.4:6443   v1.23.4   Healthy
 </code></pre></div><p>The karmada clusterimportpolicy requires the karmada cluster to be in Push mode and in Ready state,
 so the <em>karmada-member-1</em> pediacluster resource is created for the <em>member-1</em> cluster.</p>
-<h2 id=new-clusterimportpolicy>New ClusterImportPolicy</h2>
+<h2 id=vcluster-clusterimportpolicy>VCluster ClusterImportPolicy</h2>
+<p>Create the <code>ClusterImportPolicy</code> for auto-discovery of <a href=https://github.com/loft-sh/vcluster>VCluster</a>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl create -f https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/main/deploy/clusterimportpolicy/vcluster.yaml
+$ kubectl get clusterimportpolicy
+NAME      AGE
+vclsuter  5h
+</code></pre></div><p><strong>Note that the VCluster cluster needs to be created in such a way that the Server address of the generated kubeconfig can be accessed by other Pods in the host cluster.</strong></p>
+<p>This can be set to a VCluster Service domain name, a Node IP or an Ingress address.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>syncer</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>extraArgs</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>out-kube-config-server=https://&lt;vcluster name&gt;.&lt;namespace&gt;.svc</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>tls-san=&lt;vcluster name&gt;.&lt;namespace&gt;.svc,127.0.0.1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p><strong>Create two VClusters in the default namespace</strong></p>
+<p>create the virtual cluster vcluster-1</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># vcluster-1.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>syncer</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>extraArgs</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>out-kube-config-server=https://vcluster-1.default.svc</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>tls-san=vcluster-1.default.svc,127.0.0.1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ vcluster create -n default -f vcluster-1.yaml vcluster-1
+</code></pre></div><p>create the virtual cluster vcluster-2</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># vcluster-2.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>syncer</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>extraArgs</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>out-kube-config-server=https://vcluster-2.default.svc</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- --<span style=color:#000>tls-san=vcluster-2.default.svc,127.0.0.1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ vcluster create -n default -f vcluster-2.yaml vcluster-2
+</code></pre></div><p><strong>List all VCluster clusters</strong></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ vcluster list
+ NAME              NAMESPACE         STATUS    CONNECTED   CREATED                         AGE
+ caiwei-vcluster   caiwei-vcluster   Running               2022-08-26 16:10:52 +0800 CST   484h49m6s
+ vcluster-1        default           Running               2022-09-15 20:57:59 +0800 CST   1m59s
+ vcluster-2        default           Running               2022-09-15 20:59:34 +0800 CST   24s
+</code></pre></div><p><strong>We can use kubectl + Clusterpedia directly to retrieve the resources in any VCluster.</strong></p>
+<blockquote>
+<p>Beforing using kubectl, you need to <a href=../access-clusterpedia/#configure-the-cluster-shortcut-for-kubectl>generate cluster shortcut configuration</a> for multi-cluster resource retrieval.</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash> $ kubectl --cluster clusterpedia get po -A
+NAMESPACE     CLUSTER                              NAME                       READY   STATUS    RESTARTS   AGE
+default       vc-caiwei-vcluster-caiwei-vcluster   backend-77f8f45fc8-5ssww   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          20d
+default       vc-caiwei-vcluster-caiwei-vcluster   backend-77f8f45fc8-j5m4c   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          20d
+default       vc-caiwei-vcluster-caiwei-vcluster   backend-77f8f45fc8-vjzf6   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          20d
+kube-system   vc-default-vcluster-1                coredns-669fb9997d-cxktv   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          3m40s
+kube-system   vc-default-vcluster-2                coredns-669fb9997d-g7w8l   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          2m6s
+kube-system   vc-caiwei-vcluster-caiwei-vcluster   coredns-669fb9997d-x6vc2   1/1     Running   <span style=color:#0000cf;font-weight:700>0</span>          20d
+
+$ kubectl --cluster clusterpedia get ns
+CLUSTER                              NAME              STATUS   AGE
+vc-default-vcluster-2                default           Active   2m49s
+vc-default-vcluster-1                default           Active   4m24s
+vc-caiwei-vcluster-caiwei-vcluster   default           Active   20d
+vc-default-vcluster-2                kube-node-lease   Active   2m49s
+vc-default-vcluster-1                kube-node-lease   Active   4m24s
+vc-caiwei-vcluster-caiwei-vcluster   kube-node-lease   Active   20d
+vc-default-vcluster-2                kube-public       Active   2m49s
+vc-default-vcluster-1                kube-public       Active   4m24s
+vc-caiwei-vcluster-caiwei-vcluster   kube-public       Active   20d
+vc-default-vcluster-2                kube-system       Active   2m49s
+vc-default-vcluster-1                kube-system       Active   4m24s
+vc-caiwei-vcluster-caiwei-vcluster   kube-system       Active   20d
+</code></pre></div><p>Clusterpedia will automatically discover the virtual clusters(VClusters) within the host cluster and create the corresponding <a href=../../concepts/pediacluster>PediaCluster</a> according to the <a href=https://github.com/clusterpedia-io/clusterpedia/blob/main/deploy/clusterimportpolicy/vcluster.yaml>VCluster ClusterImportPolicy</a>,
+and users can access Clusterpedia directly to retrieve resources</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ kubectl get pediaclusterlifecycle
+NAME                                 AGE
+vc-caiwei-vcluster-caiwei-vcluster   20d
+vc-default-vcluster-1                5m57s
+vc-default-vcluster-2                4m24s
+
+$ kubectl get pediacluster
+NAME                                 READY   VERSION        APISERVER
+vc-caiwei-vcluster-caiwei-vcluster   True    v1.23.5+k3s1   https://caiwei-vcluster.caiwei-vcluster.svc
+vc-default-vcluster-1                True    v1.23.5+k3s1   https://vcluster-1.default.svc
+vc-default-vcluster-2                True    v1.23.5+k3s1   https://vcluster-2.default.svc
+</code></pre></div><h2 id=new-clusterimportpolicy>New ClusterImportPolicy</h2>
 <p>If the <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/deploy/clusterimportpolicy>Clusterpedia repository</a> does not maintain a ClusterImportPolicy for a platform, then we can create a new ClusterImportPolicy</p>
 <p><strong>A detailed description of the <code>ClusterImportPolicy</code> principles and fields can be found in the <a href=../../concepts/cluster-import-policy>Cluster Auto Import Policy</a></strong></p>
 <p>Now assume that there is a multi-cloud platform <strong>MCP</strong> that uses a custom resource &ndash; Cluster to represent the managed clusters
@@ -1288,7 +1378,7 @@ resources                          clusterpedia.io/v1beta1    false        Resou
 <h3 id=configure-the-cluster-shortcut-for-kubectl>Configure the cluster shortcut for kubectl</h3>
 <p>Although we can use URLs to access Clusterpedia resources, if we want to use kubectl to query more conveniently, we need to configure the kubeconfig cluster.</p>
 <p>Clusterpedia provides a simple script to generate <code>cluster config</code> in the kubeconfig.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/v0.4.1/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>curl -sfL https://raw.githubusercontent.com/clusterpedia-io/clusterpedia/v0.5.0/hack/gen-clusterconfigs.sh <span style=color:#000;font-weight:700>|</span> sh -
 </code></pre></div><pre tabindex=0><code># Output:
 Current Context: kubernetes-admin@kubernetes
 Current Cluster: kubernetes
@@ -2470,7 +2560,7 @@ kubectl get --raw<span style=color:#ce5c00;font-weight:700>=</span><span style=c
 <tbody>
 <tr>
 <td>Allow synchronization of all resources</td>
-<td><code>AllowSyncAllCustomResources</code></td>
+<td><code>AllowSyncAllResources</code></td>
 <td>true</td>
 </tr>
 </tbody>
