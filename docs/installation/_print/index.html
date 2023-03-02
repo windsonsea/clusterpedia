@@ -65,7 +65,7 @@ English
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.465ee6196c51634c70402cc2e77c0900.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.69e4bcf7289095f4cfe857352ad87e6e.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -109,7 +109,7 @@ This is the multi-page printable view of this section.
 <p>Pull clusterpedia project:</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/clusterpedia-io/clusterpedia.git
 <span style=color:#204a87>cd</span> clusterpedia
-git checkout v0.5.0
+git checkout v0.6.0
 </code></pre></div><h3 id=install-storage-component>Install storage component</h3>
 <p>Clusterpedia installation provides two storage components (<strong>MySQL 8.0</strong> and <strong>PostgreSQL 12</strong>) to choose.</p>
 <blockquote>
@@ -180,9 +180,9 @@ kubectl delete -f ./deploy/cluster.clusterpedia.io_pediaclusers.yaml
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pv clusterpedia-internalstorage-&lt;storage type&gt;
 </code></pre></div><p>Once you know the node where the data is stored, you can delete the Local PV.</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pv clusterpedia-internalstorage-&lt;storage type&gt;
-</code></pre></div><p>Log in to the node where the data is located and clean up the data</p>
+</code></pre></div><p>Log in to the node where the data is located and clean up the data.</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#8f5902;font-style:italic># In the node where the legacy data is located</span>
-rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
+rm -rf /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 </code></pre></div>
 </div>
 <div class=td-content style=page-break-before:always>
@@ -396,7 +396,7 @@ rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 </ul>
 </div>
 <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-<small class=text-white>&copy; 2022 The Clusterpedia Authors All Rights Reserved</small>
+<small class=text-white>&copy; 2023 The Clusterpedia Authors All Rights Reserved</small>
 <p class=mt-2><a href=/about/>About Clusterpedia</a></p>
 </div>
 </div>

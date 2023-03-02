@@ -65,7 +65,7 @@
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.465ee6196c51634c70402cc2e77c0900.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.69e4bcf7289095f4cfe857352ad87e6e.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -108,7 +108,7 @@
 <p>拉取项目：</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>git clone https://github.com/clusterpedia-io/clusterpedia.git
 <span style=color:#204a87>cd</span> clusterpedia
-git checkout v0.5.0
+git checkout v0.6.0
 </code></pre></div><h3 id=安装存储组件>安装存储组件</h3>
 <p>Clusterpedia 安装时提供了 <strong>MySQL 8.0</strong> 和 <strong>PostgreSQL 12</strong> 两种存储组件以供选择。</p>
 <blockquote>
@@ -144,7 +144,7 @@ sed <span style=color:#4e9a06>&#34;s|__NODE_NAME__|</span><span style=color:#000
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#8f5902;font-style:italic># 部署 Clusterpedia CRD 与组件</span>
 kubectl apply -f ./deploy
 </code></pre></div><h3 id=安装完成>安装完成</h3>
-<p>检查组件 Pods 运行是否正常</p>
+<p>检查组件 Pods 运行是否正常。</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl -n clusterpedia-system get pods
 </code></pre></div><h3 id=部署集群自动接入策略--clusterimportpolicy>部署集群自动接入策略 —— ClusterImportPolicy</h3>
 <p>0.4.0 后，Clusterpedia 提供了更加友好的接入多云平台的方式。</p>
@@ -186,7 +186,7 @@ kubectl delete -f ./deploy/policy.clusterpedia.io_pediaclusterlifecycles.yaml
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pv clusterpedia-internalstorage-&lt;storage type&gt;
 </code></pre></div><p>登录数据所在节点，清理数据。</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#8f5902;font-style:italic># 遗留数据所在节点</span>
-rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
+rm -rf /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 </code></pre></div>
 </div>
 <div class=td-content style=page-break-before:always>
@@ -397,7 +397,7 @@ rm /var/local/clusterpedia/internalstorage/&lt;storage type&gt;
 </ul>
 </div>
 <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-<small class=text-white>&copy; 2022 The Clusterpedia Authors 保留所有权利</small>
+<small class=text-white>&copy; 2023 The Clusterpedia Authors 保留所有权利</small>
 <p class=mt-2><a href=/zh-cn/about/>关于 Clusterpedia</a></p>
 </div>
 </div>

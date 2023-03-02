@@ -1,0 +1,578 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<link rel=canonical type=text/html href=/docs/advanced-features/>
+<meta name=robots content="noindex, nofollow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Advanced Features | Clusterpedia.io</title>
+<meta name=description content>
+<meta property="og:title" content="Advanced Features">
+<meta property="og:description" content="Clusterpedia.io website">
+<meta property="og:type" content="website">
+<meta property="og:url" content="/docs/advanced-features/"><meta property="og:site_name" content="Clusterpedia.io">
+<meta itemprop=name content="Advanced Features">
+<meta itemprop=description content="Clusterpedia.io website"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Advanced Features">
+<meta name=twitter:description content="Clusterpedia.io website">
+<link rel=preload href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css as=style>
+<link href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+<script src=https://unpkg.com/lunr@2.3.9/lunr.min.js integrity=sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli crossorigin=anonymous></script>
+<link href=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.css rel=stylesheet>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZQPMJ4HH3"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-NZQPMJ4HH3',{anonymize_ip:!1})}</script>
+</head>
+<body class=td-section>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo><svg id="Graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g id="Cpedia_-_Graph_-_Color_Dark" data-name="Cpedia - Graph - Color Dark"><rect id="Frame" width="512" height="512" fill="none"/><path id="Secondary" d="M476 221.051A274.908 274.908.0 00428.269 256 282.438 282.438.0 01395.7 220.752a322.971 322.971.0 0156.3-41.27zM362.4 256a334.139 334.139.0 00-53.2 92.145A329.953 329.953.0 00295.32 394.6a322.932 322.932.0 00-7.587 69.4h48a274.957 274.957.0 016.4-58.813 282.32 282.32.0 0114.238-45.835 285.94 285.94.0 0139.323-68.1A330.2 330.2.0 01362.4 256zM169.865 405.189a274.9 274.9.0 016.4 58.811h48a322.893 322.893.0 00-7.589-69.4 282.46 282.46.0 00-46.811 10.589zM179.94 300.03A333.961 333.961.0 00149.6 256a330 330 0 00-33.291-35.248A322.915 322.915.0 0060 179.482L36 221.051A274.964 274.964.0 0183.733 256a282.3 282.3.0 0132.576 35.248 286.331 286.331.0 0122.054 32.768 286.3 286.3.0 0117.264 35.339A330.144 330.144.0 01202.8 348.148 334.156 334.156.0 00179.94 300.03zM169.865 106.811a274.966 274.966.0 01-54.132-23.862l-24 41.569a322.934 322.934.0 0063.894 28.127 282.241 282.241.0 0014.238-45.834zm186.507 45.836a322.994 322.994.0 0063.895-28.129l-24-41.569a275.02 275.02.0 01-54.133 23.864A282.293 282.293.0 01295.32 117.4a286.278 286.278.0 01-39.307 2.716h-.1a286.366 286.366.0 01-39.237-2.718 330.245 330.245.0 01-13.88 46.455 334.129 334.129.0 0053.1 4.263h.115a333.931 333.931.0 0053.187-4.261 329.92 329.92.0 0047.174-11.208z" fill="#1b1c1d"/><path id="Primary" d="M211.993 256l22-38.1h44l22 38.1-22 38.105h-44zM342.134 106.813A274.957 274.957.0 01335.733 48h-48a322.932 322.932.0 007.587 69.4 282.293 282.293.0 0046.814-10.587zM428.269 256A282.438 282.438.0 01395.7 220.752a285.92 285.92.0 01-39.323-68.105A329.92 329.92.0 01309.2 163.854 334.125 334.125.0 00362.4 256a330.2 330.2.0 0033.3 35.248 322.971 322.971.0 0056.3 41.27l24-41.569A274.908 274.908.0 01428.269 256zM149.6 256a333.961 333.961.0 0030.34-44.03 334.156 334.156.0 0022.86-48.118 330.245 330.245.0 0013.88-46.455A322.893 322.893.0 00224.267 48h-48a274.9 274.9.0 01-6.4 58.811 282.241 282.241.0 01-14.238 45.834 286.3 286.3.0 01-17.264 35.339 286.331 286.331.0 01-22.054 32.768A330 330 0 01149.6 256zm-65.867.0A274.964 274.964.0 0136 290.949l24 41.569a322.915 322.915.0 0056.309-41.27A282.3 282.3.0 0083.733 256zM255.9 343.885a334.129 334.129.0 00-53.1 4.263 330.144 330.144.0 00-47.171 11.207 322.934 322.934.0 00-63.894 28.127l24 41.569a274.966 274.966.0 0154.132-23.862A282.46 282.46.0 01216.678 394.6a286.366 286.366.0 0139.237-2.718h.1A286.278 286.278.0 01295.32 394.6a329.953 329.953.0 0113.88-46.456 334.028 334.028.0 00-53.187-4.26zm86.236 61.3a275.027 275.027.0 0154.133 23.864l24-41.569a322.991 322.991.0 00-63.895-28.13 282.32 282.32.0 00-14.24 45.837z" fill="#33de72"/></g></svg></span><span class=font-weight-bold>Clusterpedia.io</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=/about/><span>About</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=/blog/><i class="fas fa-blog"></i><span>Blog</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class="nav-link active" href=/docs/><i class="fas fa-book"></i><span class=active>Documentation</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=https://github.com/clusterpedia-io/clusterpedia target=_blank><i class="fab fa-github"></i><span>GitHub</span></a>
+</li>
+<li class="nav-item mr-4 mb-2 mb-lg-0">
+<a class=nav-link href=https://cloud-native.slack.com/messages/clusterpedia target=_blank><i class="fab fa-slack"></i><span>Slack</span></a>
+</li>
+<li class="nav-item dropdown mr-4 d-none d-lg-block">
+<a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+English
+</a>
+<div class=dropdown-menu aria-labelledby=navbarDropdownMenuLink>
+<a class=dropdown-item href=/zh-cn/docs/advanced-features/>中文 Chinese</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.69e4bcf7289095f4cfe857352ad87e6e.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+</div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<div class=td-content>
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href=# onclick="return print(),!1">Click here to print</a>.
+</p><p>
+<a href=/docs/advanced-features/>Return to the regular view of this page</a>.
+</p>
+</div>
+<h1 class=title>Advanced Features</h1>
+<ul>
+<li>1: <a href=#pg-3f7581a2a6289f53ebfc75ee37b2d8d4>Custom Storage Layer Plugin</a></li>
+</ul>
+<div class=content>
+</div>
+</div>
+<div class=td-content>
+<h1 id=pg-3f7581a2a6289f53ebfc75ee37b2d8d4>1 - Custom Storage Layer Plugin</h1>
+<p>Clusterpedia can use different storage components such as MySQL/PostgreSQL, Memory, Elasticsearch through the storage layer.</p>
+<p>Currently, Clusterpedia has two built-in storage layers:</p>
+<ul>
+<li>The <a href=https://clusterpedia.io/en/docs/installation/configurate/configurate-internalstorage/>internalstorage</a> storage layer for accessing relational databases.</li>
+<li>The <a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/pkg/storage/memorystorage>memory</a> storage layer based on Memory</li>
+</ul>
+<p>Although Clusterpedia already supports relational databases and memory by default, user requirements are often variable and complex, and a fixed storage layer may not match the requirements of different users for storage components and performance, so Clusterpedia supports access to user-implemented storage layers by means of plugins, which we call <code>custom storage layer plugins</code>, or <code>storage plugins</code> for short.</p>
+<p>With the <code>storage plugin</code>, users can do the following things:</p>
+<ul>
+<li><strong>Use any storage component</strong>, such as <code>Elasticsearch</code>, <code>RedisGraph</code>, <code>Etcd</code>, or even <code>MessageQueue</code> with no problem</li>
+<li>Allow users to optimize the storage format and query performance of resources for their business</li>
+<li>Implement more advanced retrieval features for storage components</li>
+</ul>
+<p>Clusterpedia also maintains a number of <code>storage plugins</code> that users can choose from, depending on your needs:</p>
+<ul>
+<li><a href=https://github.com/clusterpedia-io/sample-storage>Sample Storage</a>: Example of a storage plugin that can connect to <strong>relational databases</strong></li>
+<li><a href=https://github.com/clusterpedia-io/elasticsearch-storage>Elasticsearch Storage</a>: Storage plugin for connecting to <strong>Elasticsearch</strong></li>
+</ul>
+<p><code>Storage plugins</code> are loaded by Clusterpedia components via <strong>Go Plugin</strong>, which provides very flexible plug-in access without any performance loss compared to RPC or other methods.</p>
+<blockquote>
+<p>The performance impact of the Go Plugin can be found at <a href=https://github.com/uberswe/goplugins>https://github.com/uberswe/goplugins</a></p>
+</blockquote>
+<p>As we all know, Go Plugin is troublesome to develop and use, but Clusterpedia cleverly optimizes the use and development of storage plugins through some mechanisms, and provides clusterpedia-io/sample-storage plugin as a reference.</p>
+<p>Here we take <a href=https://github.com/clusterpedia-io/sample-storage>clusterpedia-io/sample-storage</a> as an example to introduce.</p>
+<ul>
+<li><a href=#use-the-custom-storage-layer-plugin>How to use the <code>custom storage layer plugin</code></a></li>
+<li><a href=#developing-custom-storage-layer-plugins>How to implement the <code>custom storage layer plugin</code></a></li>
+</ul>
+<h2 id=use-the-custom-storage-layer-plugin>Use the <code>custom storage layer plugin</code></h2>
+<p>The use of the storage plugin can be broadly divided into three ways:</p>
+<ol>
+<li>Run the Clusterpedia component binary and load the storage plugins</li>
+<li>Use the base Chart &ndash; clusterpedia-core to set up the <code>storage plugin image</code> and configure the storage layer</li>
+<li>Use the Clusterpedia <strong>Advanced Chart</strong> to not care about the storage plugin settings</li>
+</ol>
+<p>By running the component binary locally, we can get a better understanding of how the Cluserpedia component loads and runs the <code>storage plugins</code>.</p>
+<p>Users can actually use the <code>storage plugin image</code> already built, or deploy Clusterpedia <strong>Advanced Chart</strong> directly</p>
+<h3 id=local-run>Local Run</h3>
+<h4 id=building-plugins>Building Plugins</h4>
+<p>A storage plugin is actually a dynamic link library with a <em>.so</em> suffix.
+Clusterpedia components can load <code>storage plugins</code> at startup and use specific <code>storage plugins</code> depending on the specified storage layer name.</p>
+<p>Let&rsquo;s take <a href=https://github.com/clusterpedia-io/sample-storage>clusterpedia-io/sample-storage</a> as an example and build a <code>storage plugin binary</code></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git clone --recursive https://github.com/clusterpedia-io/sample-storage.git <span style=color:#ce5c00;font-weight:700>&amp;&amp;</span> <span style=color:#204a87>cd</span> sample-storage
+$ make build-plugin
+</code></pre></div><p>Use the <strong>file</strong> command to view storage plugin information</p>
+<pre tabindex=0><code>$ file ./plugins/sample-storage-layer.so
+./plugins/sample-storage-layer.so: Mach-O 64-bit dynamically linked shared library x86_64
+</code></pre><p>Clusterpedia&rsquo;s <code>ClusterSynchro Manager</code> and <code>APIServer</code> components can load and use storage plugins via environment variables and command flags:</p>
+<ul>
+<li><code>STORAGE_PLUGINS=&lt;plugins dir></code> environment variable sets the directory where the plugins are located, and Clusterpedia will load all plugins in that directory into the component</li>
+<li><code>--storage-name=&lt;storage name></code> command flag, set the storage layer name</li>
+<li><code>--storage-config=&lt;storage config path></code> command flag, set the storage layer configuration</li>
+</ul>
+<h4 id=building-components>Building components</h4>
+<p>To ensure consistent dependencies when running locally, clusterpedia components need to be built locally with the <code>make build-components</code> command</p>
+<blockquote>
+<p>For more information on building storage plugins and Clusterpedia components see <a href=#local-development-run>Developing custom storage layer plugins</a></p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#8f5902;font-style:italic># cd sample-storage</span>
+$ make build-components
+$ ls -al ./bin
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>90707488</span> <span style=color:#0000cf;font-weight:700>11</span>  <span style=color:#0000cf;font-weight:700>7</span> 11:15 apiserver
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>91896016</span> <span style=color:#0000cf;font-weight:700>11</span>  <span style=color:#0000cf;font-weight:700>7</span> 11:16 binding-apiserver
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>82769728</span> <span style=color:#0000cf;font-weight:700>11</span>  <span style=color:#0000cf;font-weight:700>7</span> 11:16 clustersynchro-manager
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>45682000</span> <span style=color:#0000cf;font-weight:700>11</span>  <span style=color:#0000cf;font-weight:700>7</span> 11:17 controller-manager
+</code></pre></div><h4 id=storage-plugin-runtime-configuration-file>Storage plugin runtime configuration file</h4>
+<p>Before running clusterpedia you also need to prepare the runtime configuration file for the storage plugin.
+<em>sample-storage</em> provides an example configuration <a href=https://github.com/clusterpedia-io/sample-storage/blob/main/example-config.yaml>example-config.yaml</a></p>
+<p>When running the clusterpedia component, set the configuration file via <code>--storage-config=./config.yaml</code> to specify the runtime configuration file</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># example-config.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>type</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mysql</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>host</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#0000cf;font-weight:700>127.0.0.1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>port</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;3306&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>user</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>root</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>password</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>dangerous0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>database</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>log</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>stdout</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>true</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>colorful</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>true</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>slowThreshold</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>100ms</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The user needs to configure the runtime configuration according to the selected storage layer</p>
+<h4 id=run-clusterpedia-clustersynchro-manager>Run clusterpedia clustersynchro manager</h4>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#000>STORAGE_PLUGINS</span><span style=color:#ce5c00;font-weight:700>=</span>./plugins ./bin/clustersynchro-manager --kubeconfig ~/.kube/config <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --storage-name<span style=color:#ce5c00;font-weight:700>=</span>sample-storage-layer <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --storage-config ./config.yaml
+</code></pre></div><h4 id=run-clusterpedia-apiserver>Run clusterpedia apiserver</h4>
+<p>You can choose not to use your own generated certificate, which requires running apiserver without the <code>-client-ca-file ca.crt</code> flag.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ openssl req -nodes -new -x509 -keyout ca.key -out ca.crt
+$ openssl req -out client.csr -new -newkey rsa:4096 -nodes -keyout client.key -subj <span style=color:#4e9a06>&#34;/CN=development/O=system:masters&#34;</span>
+$ openssl x509 -req -days <span style=color:#0000cf;font-weight:700>365</span> -in client.csr -CA ca.crt -CAkey ca.key -set_serial <span style=color:#0000cf;font-weight:700>01</span> -sha256 -out client.crt
+</code></pre></div><p>run apiserver</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#000>STORAGE_PLUGINS</span><span style=color:#ce5c00;font-weight:700>=</span>./plugins ./bin/apiserver --client-ca-file ca.crt  --secure-port <span style=color:#0000cf;font-weight:700>8443</span> <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --kubeconfig ~/.kube/config <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --authentication-kubeconfig ~/.kube/config <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --authorization-kubeconfig ~/.kube/config <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --storage-name<span style=color:#ce5c00;font-weight:700>=</span>sample-storage-layer <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>    --storage-config ./config.yaml
+</code></pre></div><h3 id=storage-plugin-image--helm-charts>Storage Plugin Image + Helm Charts</h3>
+<p>Clusterpeida already provides several Charts:</p>
+<ul>
+<li><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia>charts/clusterpedia</a> is a Chart using the internalstorage storage layer, which can be optionally deployed with MySQL or PostgreSQL, but does not support setting up storage plugins</li>
+<li><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-core>charts/clusterpedia-core</a> supports configuration of any storage layer Chart, usually used as a child Chart</li>
+<li><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-mysql>charts/clusterpedia-mysql</a> is an <strong>advanced Chart</strong> using MySQL as the storage component, based on clusterpedia-core implementation</li>
+<li><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-postgresql>charts/clusterpedia-postgresql</a> is an <strong>advanced Chart</strong> using PostgreSQL as the storage component, based on the clusterpedia-core implementation</li>
+<li><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-elasticsearch>charts/clusterpedia-elasticsearch</a> uses Elasticsearch as the <strong>advanced Chart</strong> for the storage component, based on the clusterpedia-core implementation</li>
+</ul>
+<p>If you don&rsquo;t need a <code>storage plugin</code> and the <em>internalstorage</em> storage layer and <strong>relational database</strong> are sufficient, you can use <a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia>charts/clusterpedia</a> directly, <strong>out of the box</strong>.</p>
+<p><a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-mysql>clusterpedia-mysql</a>，<a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-postgresql>clusterpedia-postgresql</a> and <a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-elasticsearch>clusterpedia-elasticsearch</a> are <strong>advanced Charts</strong> based on <a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-core>charts/clusterpedia-core</a>, in which the user is shielded from the complex concept of <code>storage plugins</code> by default configuration of <em>clusterpedia-core</em>&rsquo;s storage plugin image and storage layer configuration, right <strong>out of the box</strong>.</p>
+<p>Although we usually use <strong>Advanced Charts</strong> directly in our usage, knowing how to use <a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia-core>charts/clusterpedia-core</a> to set up <code>storage plugin images</code> gives us a better understanding of how plugin images work.</p>
+<h4 id=clusterpedia-core>clusterpedia-core</h4>
+<p>Let&rsquo;s take <a href=https://github.com/clusterpedia-io/sample-storage>clusterpedia-io/sample-storage</a> as an example and deploy Clusterpedia using the <a href=https://github.com/clusterpedia-io/sample-storage/pkgs/container/clusterpedia%2Fsample-storage-layer>ghcr.io/clusterpedia-io/clusterpedia/sample-storage-layer</a> plugin image.</p>
+<p>The <em>clusterpedia-core</em> does not involve the deployment and installation of any storage components, so users need to configure the storage layer according to the deployed storage components</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># myvalues.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>storage</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;sample-storage-layer&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>registry</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ghcr.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-io/clusterpedia/sample-storage-layer</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>tag</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v0.0.0-v0.6.0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>config</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>type</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;mysql&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>host</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;10.111.94.196&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>port</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#0000cf;font-weight:700>3306</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>user</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>root</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>password</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>dangerous0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>database</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p><code>storage.name</code> sets the storage layer name of the <code>storage image plugin</code></p>
+<p>clusterpedia-core copies the <code>storage plugins</code> from the plugin image defined by <code>storage.image</code> to the component&rsquo;s plugin directory.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># helm template clusterpedia -n clusterpedia-system -f myvalues.yaml ./clusterpedia-core</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>...</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>initContainers</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>copy-storage-plugin</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ghcr.io/clusterpedia-io/clusterpedia/sample-storage-layer:v0.0.0-v0.6.0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>imagePullPolicy</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>IfNotPresent</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>command</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span>- <span style=color:#000>/bin/sh</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span>- -<span style=color:#000>ec</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span>- <span style=color:#000>cp /plugins/* /var/lib/clusterpedia/plugins/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>volumeMounts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>storage-plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>mountPath</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>/var/lib/clusterpedia/plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>containers</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-clusterpedia-core-apiserver</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ghcr.io/clusterpedia-io/clusterpedia/apiserver:v0.6.0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>imagePullPolicy</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>IfNotPresent</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>command</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>/usr/local/bin/apiserver</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- --<span style=color:#000>secure-port=443</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- --<span style=color:#000>storage-name=sample-storage-layer</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- --<span style=color:#000>storage-config=/etc/clusterpedia/storage/config.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>env</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>STORAGE_PLUGINS</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>value</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>/var/lib/clusterpedia/plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>volumeMounts</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>storage-config</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>mountPath</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>/etc/clusterpedia/storage</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>readOnly</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>true</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>storage-plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>mountPath</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>/var/lib/clusterpedia/plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>readOnly</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#204a87;font-weight:700>true</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>volumes</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>storage-config</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>configMap</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-clusterpedia-core-sample-storage-layer-config</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>storage-plugins</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>emptyDir</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{}<span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>...</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>In addition to using <code>storage.config</code> to define the runtime configuration <em>config.yaml</em> for the storage layer, you can also use the existing configmap and secret.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># myvalues.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>storage</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;sample-storage-layer&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>registry</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ghcr.io</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-io/clusterpedia/sample-storage-layer</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>tag</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v0.0.0-v0.6.0</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>configMap</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;sample-storage-config&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>componentEnv</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>DB_PASSWORD</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>valueFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>secretKeyRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;sample-storage-password&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>password</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p><em>clusterpedia-core</em> is very flexible in configuration of the storage layer in order to be referenced by other <strong>advanced Charts</strong> as a child Chart, but users do not necessarily need to use clusterpedia-core directly in practice, just the <strong>advanced Charts</strong> deployed for the specific storage component, such as <em>clusterpedia-mysql</em> and <em>clusterpedia-postgresql</em>.</p>
+<p>In the next section we will also describe how to implement <strong>Advanced Charts</strong> for specific storage components based on <em>clusterpedia-core</em>.</p>
+<h2 id=developing-custom-storage-layer-plugins>Developing <code>custom storage layer plugins</code></h2>
+<p><a href=https://github.com/clusterpedia-io/sample-storage>clusterpedia-io/sample-storage</a> is not only a storage plugin example, but also a template repository where the project structure and most of the build tools can be used in other storage plugin projects</p>
+<p>We first clone <em>sample-storage</em>, or generate a new storage plugin repository based on <em>sample-storage</em></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git clone --recursive https://github.com/clusterpedia-io/sample-storage.git <span style=color:#ce5c00;font-weight:700>&amp;&amp;</span> <span style=color:#204a87>cd</span> sample-storage
+</code></pre></div><p>Note that when pulling the repository, you need to specify <code>--recursive</code> to pull the sub-repository</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+...
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff    <span style=color:#0000cf;font-weight:700>260</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 15:14 Dockerfile
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff   <span style=color:#0000cf;font-weight:700>1836</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 16:03 Makefile
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff   <span style=color:#0000cf;font-weight:700>2219</span> <span style=color:#0000cf;font-weight:700>11</span> <span style=color:#0000cf;font-weight:700>23</span> 10:25 README.md
+drwxr-xr-x  <span style=color:#0000cf;font-weight:700>32</span> icebergu  staff   <span style=color:#0000cf;font-weight:700>1024</span> <span style=color:#0000cf;font-weight:700>11</span> <span style=color:#0000cf;font-weight:700>23</span> 10:30 clusterpedia
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff    <span style=color:#0000cf;font-weight:700>156</span> <span style=color:#0000cf;font-weight:700>11</span> <span style=color:#0000cf;font-weight:700>23</span> 10:25 example-config.yaml
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff   <span style=color:#0000cf;font-weight:700>2376</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 15:33 go.mod
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>46109</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 15:33 go.sum
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff    <span style=color:#0000cf;font-weight:700>139</span> <span style=color:#0000cf;font-weight:700>11</span> <span style=color:#0000cf;font-weight:700>23</span> 10:25 main.go
+drwxr-xr-x  <span style=color:#0000cf;font-weight:700>16</span> icebergu  staff    <span style=color:#0000cf;font-weight:700>512</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 15:33 storage
+drwxr-xr-x   <span style=color:#0000cf;font-weight:700>9</span> icebergu  staff    <span style=color:#0000cf;font-weight:700>288</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>13</span> 15:33 vendor
+</code></pre></div><p>The entire project structure is divided into three categories:</p>
+<ul>
+<li><em>main.go</em>, <em>storage</em> package: the core logic of the custom storage plugin</li>
+<li><code>clusterpedia</code> local repository: used for local development and testing</li>
+<li><em>Dockerfile</em> and <em>Makefile</em> for project build and image packaging, which can be applied to any storage plugin project</li>
+</ul>
+<h3 id=core-logic>core logic</h3>
+<p><em>main.go</em> is the main storage plugin file, mainly used to call the registration function in the storage package &ndash; <code>RegisterStorageLayer</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#204a87;font-weight:700>package</span> <span style=color:#000>main</span>
+
+<span style=color:#204a87;font-weight:700>import</span> <span style=color:#000;font-weight:700>(</span>
+	<span style=color:#000>plugin</span> <span style=color:#4e9a06>&#34;github.com/clusterpedia-io/sample-storage-layer/storage&#34;</span>
+<span style=color:#000;font-weight:700>)</span>
+
+<span style=color:#204a87;font-weight:700>func</span> <span style=color:#000>init</span><span style=color:#000;font-weight:700>()</span> <span style=color:#000;font-weight:700>{</span>
+	<span style=color:#000>plugin</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>RegisterStorageLayer</span><span style=color:#000;font-weight:700>()</span>
+<span style=color:#000;font-weight:700>}</span>
+</code></pre></div><p>The storage package contains the core logic of the storage plugin:</p>
+<ol>
+<li>Implementing the clusterpedia storage layer interface <a href=https://github.com/clusterpedia-io/clusterpedia/blob/4608c8d13101d82960525dfe39f51e4f64ed49b3/pkg/storage/storage.go#L13><code>storage.StorageFactory</code></a></li>
+</ol>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#204a87;font-weight:700>import</span> <span style=color:#000;font-weight:700>(</span>
+	<span style=color:#4e9a06>&#34;gorm.io/gorm&#34;</span>
+
+	<span style=color:#4e9a06>&#34;github.com/clusterpedia-io/clusterpedia/pkg/storage&#34;</span>
+<span style=color:#000;font-weight:700>)</span>
+
+<span style=color:#204a87;font-weight:700>type</span> <span style=color:#000>StorageFactory</span> <span style=color:#204a87;font-weight:700>struct</span> <span style=color:#000;font-weight:700>{</span>
+	<span style=color:#000>db</span> <span style=color:#ce5c00;font-weight:700>*</span><span style=color:#000>gorm</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>DB</span>
+<span style=color:#000;font-weight:700>}</span>
+
+<span style=color:#204a87;font-weight:700>var</span> <span style=color:#000>_</span> <span style=color:#000>storage</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>StorageFactory</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#ce5c00;font-weight:700>&amp;</span><span style=color:#000>StorageFactory</span><span style=color:#000;font-weight:700>{}</span>
+</code></pre></div><ol start=2>
+<li><a href=https://github.com/clusterpedia-io/sample-storage/blob/main/storage/register.go#L33>NewStorageFactory</a> function to return an instance of <code>storage.StorageFactory</code></li>
+</ol>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#204a87;font-weight:700>func</span> <span style=color:#000>NewStorageFactory</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>configPath</span> <span style=color:#204a87;font-weight:700>string</span><span style=color:#000;font-weight:700>)</span> <span style=color:#000;font-weight:700>(</span><span style=color:#000>storage</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>StorageFactory</span><span style=color:#000;font-weight:700>,</span> <span style=color:#204a87;font-weight:700>error</span><span style=color:#000;font-weight:700>)</span>
+</code></pre></div><ol start=3>
+<li>The RegisterStorageLayer function registers the NewStorageFactory with clusterpedia</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#204a87;font-weight:700>const</span> <span style=color:#000>StorageName</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#4e9a06>&#34;sample-storage-layer&#34;</span>
+
+<span style=color:#204a87;font-weight:700>func</span> <span style=color:#000>RegisterStorageLayer</span><span style=color:#000;font-weight:700>()</span> <span style=color:#000;font-weight:700>{</span>
+	<span style=color:#000>storage</span><span style=color:#000;font-weight:700>.</span><span style=color:#000>RegisterStorageFactoryFunc</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>StorageName</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>NewStorageFactory</span><span style=color:#000;font-weight:700>)</span>
+<span style=color:#000;font-weight:700>}</span>
+</code></pre></div><p>The registered <strong>NewStorageFactory</strong> is automatically called when the user specifies the storage layer with <code>--storage-name</code> to create an instance of <code>storage.StorageFactory</code>.</p>
+<h3 id=local-development-run>Local development run</h3>
+<p>To facilitate development and testing, we have added the clusterpedia repository as a subrepository to the storage plugin repository</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git submodule status
++4608c8d13101d82960525dfe39f51e4f64ed49b3 clusterpedia <span style=color:#ce5c00;font-weight:700>(</span>v0.6.0<span style=color:#ce5c00;font-weight:700>)</span>
+</code></pre></div><p>and replace the clusterpedia repository in go.mod with a local subrepository</p>
+<pre tabindex=0><code># go.mod
+replace (
+        github.com/clusterpedia-io/api =&gt; ./clusterpedia/staging/src/github.com/clusterpedia-io/api
+        github.com/clusterpedia-io/clusterpedia =&gt; ./clusterpedia
+)
+</code></pre><p>The local cluserpedia subrepository will not be used when building the <code>storage layer image</code></p>
+<h4 id=build-storage-plugin>Build <code>storage plugin</code></h4>
+<p>The build of the storage plugin is divided into two parts, building the components in the clusterpedia repository and building the <code>storage plugin</code>.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ make build-components
+<span style=color:#000>OUTPUT_DIR</span><span style=color:#ce5c00;font-weight:700>=</span>/Users/icebergu/workspace/clusterpedia/sample-storage-layer <span style=color:#000>ON_PLUGINS</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87>true</span> <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                /Library/Developer/CommandLineTools/usr/bin/make -C clusterpedia all
+hack/builder.sh apiserver
+hack/builder.sh binding-apiserver
+hack/builder.sh clustersynchro-manager
+hack/builder-nocgo.sh controller-manager
+
+$ ls -al ./bin
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>90724968</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>15</span> 09:51 apiserver
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>91936472</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>15</span> 09:52 binding-apiserver
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>82826584</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>15</span> 09:52 clustersynchro-manager
+-rwxr-xr-x   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>45677904</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>15</span> 09:52 controller-manager
+</code></pre></div><p>The <code>make build-components</code> command will call <code>make all</code> from the clusterpedia repository and output the result to <em>./bin</em> directory of the storage plugin project.</p>
+<blockquote>
+<p>If the clusterpedia subrepository has not changed, then you only need to build the components once</p>
+</blockquote>
+<p>Build the storage plugin</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ make build-plugin
+<span style=color:#000>CLUSTERPEDIA_REPO</span><span style=color:#ce5c00;font-weight:700>=</span>/Users/icebergu/workspace/clusterpedia/sample-storage/clusterpedia <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                clusterpedia/hack/builder.sh plugins sample-storage-layer.so
+
+$ ls -al ./plugins
+-rw-r--r--   <span style=color:#0000cf;font-weight:700>1</span> icebergu  staff  <span style=color:#0000cf;font-weight:700>53354352</span> <span style=color:#0000cf;font-weight:700>12</span> <span style=color:#0000cf;font-weight:700>15</span> 09:47 sample-storage-layer.so
+</code></pre></div><p>Building the storage plugin locally also requires using the <a href=https://github.com/clusterpedia-io/clusterpedia/blob/main/hack/builder.sh>builder.sh</a> script of the clusterpedia repository to build the plugin binary.</p>
+<p>For running storage plugins, see <a href=#local-run>Running storage plugins locally</a></p>
+<h3 id=storage-plugin-image>storage plugin image</h3>
+<p>As mentioned above, <code>storage plugins</code> are shared with clusterpedia by image in a real deployment.</p>
+<p>The Makefile provides <code>make image-plugin</code> to build images and <code>make push-images</code> to publish them.</p>
+<h4 id=building-images>Building images</h4>
+<p>To build a plugin image, we need to use the <a href=https://github.com/clusterpedia-io/clusterpedia/pkgs/container/clusterpedia%2Fbuilder>clusterpedia/builder</a> image as the base image to build the plugin, and the builder image needs to be the same version as the clusterpedia component that uses the plugin</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#000>BUILDER_IMAGE</span><span style=color:#ce5c00;font-weight:700>=</span>ghcr.io/clusterpedia-io/clusterpedia/builder:v0.6.0 make image-plugin
+</code></pre></div><p>clusterpedia maintains a builder image of the published version, and users can also use their own locally built builder image</p>
+<p>Build the builder image locally</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ <span style=color:#204a87>cd</span> clusterpedia
+$ make image-builder
+docker buildx build <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                -t <span style=color:#4e9a06>&#34;ghcr.io/clusterpedia-io/clusterpedia&#34;</span>/builder-amd64:4608c8d13101d82960525dfe39f51e4f64ed49b3 <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                --platform<span style=color:#ce5c00;font-weight:700>=</span>linux/amd64 <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                --load <span style=color:#4e9a06>\
+</span><span style=color:#4e9a06></span>                -f builder.dockerfile . <span style=color:#000;font-weight:700>;</span> <span style=color:#4e9a06>\
+</span></code></pre></div><p>The tag format for <code>storage plugin images</code> is &lt; stroage version >-&lt;clusterpedia-version/commit>, for example: <em>ghcr.io/clusterpedia-io/clusterpedia/sample-storage-layer:v0.0.0-v0.6.0</em></p>
+<p>The storage plugin image can be deployed in the &lt;clusterpedia-version/commit> version of Clusterpedia</p>
+<h4 id=push-images>push images</h4>
+<p><code>make image-plugin</code> builds the storage plugin image based on the manually set builder image</p>
+<p>While pushing images with <code>make push-images</code> automatically builds images for all compatible versions and architectures</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-makefile data-lang=makefile><span style=color:#8f5902;font-style:italic># Makefile
+</span><span style=color:#8f5902;font-style:italic></span><span style=color:#000>CLUSTERPEDIA_VERSIONS</span> <span style=color:#ce5c00;font-weight:700>=</span> v0.6.0-beta.1 v0.6.0
+<span style=color:#000>RELEASE_ARCHS</span> <span style=color:#ce5c00;font-weight:700>?=</span> amd64 arm64
+</code></pre></div><p>Once the image is built, <a href=#clusterpedia-core>the storage plugin image can be used via cluserpedia-core</a></p>
+<h2 id=advanced-chart-based-on-clusterpedia-core>Advanced Chart based on clusterpedia-core</h2>
+<p>After implementing our own storage plugin, we still need to provide an <strong>Advanced Chart</strong> based on <em>clusterpedia-core</em> Chart to make it easier to use.</p>
+<p><strong>Advanced Chart</strong> needs to provide the following capabilities:</p>
+<ul>
+<li>Set the default storage plugin image</li>
+<li>Set the storage layer name</li>
+<li>Support dynamic setting of the runtime configuration of the storage layer</li>
+<li>Provide configuration and installation of storage components</li>
+</ul>
+<p>Create a new Chart using the <em>sample-storage</em> storage plugin &ndash; <em>clusterpedia-sample-mysql</em>, which will use mysql as the storage component.</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># Chart.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>dependencies</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>mysql</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>https://charts.bitnami.com/bitnami</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>version</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#0000cf;font-weight:700>9.</span><span style=color:#000>x.x</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>common</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>https://charts.bitnami.com/bitnami</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>version</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#0000cf;font-weight:700>1.</span><span style=color:#000>x.x</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-core</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>https://clusterpedia-io.github.io/clusterpedia-helm/</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>version</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#0000cf;font-weight:700>0.1</span><span style=color:#000>.x</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>We need to override the storage layer related settings in clusterpedia-core, which provides both <strong>values.yaml</strong> and <strong>dynamic templates</strong> to set up the storage plugin and storage layer information</p>
+<p>We override the static settings of the storage layer in values.yaml, such as <strong>plugin image</strong> and <strong>storage layer name</strong></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># values.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>clusterpedia-core</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>storage</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;sample-storage-layer&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>registry</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;ghcr.io&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>repository</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;clusterpedia-io/clusterpedia/sample-storage-layer&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>tag</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#4e9a06>&#34;v0.0.0-v0.6.0&#34;</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The <em>config.yaml</em> and some environment variables of the custom storage layer generally need to refer to ConfigMap and Secret, and the names of these resources will change dynamically according to the Chart release name, so we need to use the <strong>dynamic templates</strong> way to set</p>
+<p>clusterpedia-core provides three overriding naming templates</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># clusterpedia-core/templates/_storage_override.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.initContainers&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.configmap.name&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.componentEnv&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>Each of them can be set as follows:</p>
+<ul>
+<li><code>apiserver</code> and <code>clustersynchro manager</code> init containers before running</li>
+<li>ConfigMap name to store the config.yaml configuration that the plugin needs to read</li>
+<li>Environment variables to be used by the storage plugin</li>
+</ul>
+<p>Let&rsquo;s take <a href=https://github.com/clusterpedia-io/clusterpedia-helm/blob/main/charts/clusterpedia-mysql/templates/_storage_override.yaml>clusterpedia-mysql</a> as an example and see how it is set</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># _storage_override.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.initContainers&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ensure-database</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>docker.io/bitnami/mysql:8.0.28-debian-10-r23</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>command</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#000>/bin/sh</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- -<span style=color:#000>ec</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>    if [ ${CREARE_DATABASE} = &#34;ture&#34; ]; then
+</span><span style=color:#8f5902;font-style:italic>      until mysql -u${STORAGE_USER} -p${DB_PASSWORD} --host=${STORAGE_HOST} --port=${STORAGE_PORT} -e &#39;CREATE DATABASE IF NOT EXISTS ${STORAGE_DATABASE}&#39;; do
+</span><span style=color:#8f5902;font-style:italic>      echo waiting for database check &amp;&amp; sleep 1;
+</span><span style=color:#8f5902;font-style:italic>      done;
+</span><span style=color:#8f5902;font-style:italic>      echo &#39;DataBase OK ✓&#39;
+</span><span style=color:#8f5902;font-style:italic>    else
+</span><span style=color:#8f5902;font-style:italic>      until mysqladmin status -u${STORAGE_USER} -p${DB_PASSWORD} --host=${STORAGE_HOST} --port=${STORAGE_PORT}; do sleep 1; done
+</span><span style=color:#8f5902;font-style:italic>    fi</span><span style=color:#f8f8f8;text-decoration:underline>    
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>env</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>DB_PASSWORD</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>valueFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>secretKeyRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.fullname&#34; . }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>password</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>envFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span>- <span style=color:#204a87;font-weight:700>configMapRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.initContainer.env.name&#34; . }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>clusterpedia-mysql defines the environment variables needed to init containers in the <a href=https://github.com/clusterpedia-io/clusterpedia-helm/blob/main/charts/clusterpedia-mysql/templates/storage-initcontainer-env-configmap.yaml>storage-initcontainer-env-configmap.yaml</a></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#204a87;font-weight:700>apiVersion</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>v1</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>kind</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ConfigMap</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>metadata</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.initContainer.env.name&#34; . }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>namespace</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>.Release.Namespace }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>labels</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;common.labels.standard&#34; . | nindent 4 }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#204a87;font-weight:700>data</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>STORAGE_HOST</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.host&#34; . | quote }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>STORAGE_PORT</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.port&#34; . | quote }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>STORAGE_USER</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.user&#34; . | quote }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>STORAGE_DATABASE</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.database&#34; . | quote }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>CREARE_DATABASE</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>.Values.externalStorage.createDatabase | quote }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The init container dynamically set by the <code>clusterpedia.storage.override.initContainers</code> naming template will be rendered to Deployment</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># helm template clusterpedia -n clusterpedia-system --set persistenceMatchNode=None .</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span><span style=color:#000>...</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>spec</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>initContainers</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>ensure-database</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>image</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>docker.io/bitnami/mysql:8.0.28-debian-10-r23</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>command</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000>/bin/sh</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- -<span style=color:#000>ec</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#000;font-weight:700>|</span><span style=color:#8f5902;font-style:italic>
+</span><span style=color:#8f5902;font-style:italic>          if [ ${CREARE_DATABASE} = &#34;ture&#34; ]; then
+</span><span style=color:#8f5902;font-style:italic>            until mysql -u${STORAGE_USER} -p${DB_PASSWORD} --host=${STORAGE_HOST} --port=${STORAGE_PORT} -e &#39;CREATE DATABASE IF NOT EXISTS ${STORAGE_DATABASE}&#39;; do
+</span><span style=color:#8f5902;font-style:italic>            echo waiting for database check &amp;&amp; sleep 1;
+</span><span style=color:#8f5902;font-style:italic>            done;
+</span><span style=color:#8f5902;font-style:italic>            echo &#39;DataBase OK ✓&#39;
+</span><span style=color:#8f5902;font-style:italic>          else
+</span><span style=color:#8f5902;font-style:italic>            until mysqladmin status -u${STORAGE_USER} -p${DB_PASSWORD} --host=${STORAGE_HOST} --port=${STORAGE_PORT}; do sleep 1; done
+</span><span style=color:#8f5902;font-style:italic>          fi</span><span style=color:#f8f8f8;text-decoration:underline>          
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>env</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>DB_PASSWORD</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>          </span><span style=color:#204a87;font-weight:700>valueFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>            </span><span style=color:#204a87;font-weight:700>secretKeyRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>              </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-mysql-storage</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>              </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>password</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span><span style=color:#204a87;font-weight:700>envFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>        </span>- <span style=color:#204a87;font-weight:700>configMapRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>            </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>clusterpedia-mysql-storage-initcontainer-env</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The ConfigMap and environment variables of the storage plugin runtime configuration <em>config.yaml</em> are also dynamically configured in clusterpedia-mysql</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#8f5902;font-style:italic># _storage_override.yaml</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.configmap.name&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>printf &#34;%s-mysql-storage-config&#34; .Release.Name -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>define &#34;clusterpedia.storage.override.componentEnv&#34; -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>- <span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>DB_PASSWORD</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>  </span><span style=color:#204a87;font-weight:700>valueFrom</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>    </span><span style=color:#204a87;font-weight:700>secretKeyRef</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>name</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span>{{<span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>include &#34;clusterpedia.mysql.storage.fullname&#34; . }}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline>      </span><span style=color:#204a87;font-weight:700>key</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8;text-decoration:underline> </span><span style=color:#000>password</span><span style=color:#f8f8f8;text-decoration:underline>
+</span><span style=color:#f8f8f8;text-decoration:underline></span>{{- <span style=color:#000>end -}}</span><span style=color:#f8f8f8;text-decoration:underline>
+</span></code></pre></div><p>The storage layer configuration is set to the APIServer and ClusterSynchro Manager Deployment through static override of values and dynamic setting of naming templates</p>
+<p><strong>Advanced Chart</strong> like <em>clusterpedia-mysql</em> allows you to mask the use of underlying storage plugins for users out of the box</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+<ul class="list-inline mb-0">
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=GitHub aria-label=GitHub>
+<a class=text-white target=_blank rel=noopener href=https://github.com/clusterpedia-io aria-label=GitHub>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title=Slack aria-label=Slack>
+<a class=text-white target=_blank rel=noopener href=https://cloud-native.slack.com/messages/clusterpedia aria-label=Slack>
+<i class="fab fa-slack"></i>
+</a>
+</li>
+<li class="list-inline-item mx-2 h3" data-toggle=tooltip data-placement=top title="Developer mailing list" aria-label="Developer mailing list">
+<a class=text-white target=_blank rel=noopener href=mailto:clusterpedia@googlegroups.com aria-label="Developer mailing list">
+<i class="fa fa-envelope"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+<small class=text-white>&copy; 2023 The Clusterpedia Authors All Rights Reserved</small>
+<p class=mt-2><a href=/about/>About Clusterpedia</a></p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<script src=/js/main.min.8ab8f81ff7e1454d30024cd6f956d4d341c3a97e2a673f988065f2ee4e147922.js integrity="sha256-irj4H/fhRU0wAkzW+VbU00HDqX4qZz+YgGXy7k4UeSI=" crossorigin=anonymous></script>
+<script src=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.js></script>
+</body>
+</html>
