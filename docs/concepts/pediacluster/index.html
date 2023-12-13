@@ -37,8 +37,8 @@ Clusterpedia needs to be very …">
  Clusterpedia needs to be very friendly to other multi-cloud platforms that may use Cluster resource to represent managed clusters, to avoid conflicts Clusterpedia uses PediaCluster.
  $ kubectl get pediacluster NAME APISERVER VERSION STATUS demo1 https://10.6.101.100:6443 v1.22.3-aliyun.1 Healthy demo2 https://10.6.101.100:6443 v1.21.0 Healthy apiVersion:cluster.clusterpedia.io/v1alpha2kind:PediaClustermetadata:name:demo1spec:apiserver:https://10.6.101.100:6443kubeconfig:caData:tokenData:certData:keyData:syncResources:[]syncAllCustomResources:falsesyncResourcesRefName:&#34;&#34;PediaCluster has two uses:
  Configure authentication information for the cluster Configure resources for synchronization  Configuring cluster authentication information can be found in Import Clusters">
-<link rel=preload href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css as=style>
-<link href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css rel=stylesheet integrity>
+<link rel=preload href=/scss/main.min.73045c8236ac0eff5872b331509c9baa375a47c43567fa214b7e8cd464d45073.css as=style>
+<link href=/scss/main.min.73045c8236ac0eff5872b331509c9baa375a47c43567fa214b7e8cd464d45073.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
 <script src=https://unpkg.com/lunr@2.3.9/lunr.min.js integrity=sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli crossorigin=anonymous></script>
 <link href=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.css rel=stylesheet>
@@ -78,7 +78,7 @@ English
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.c094bf1d8259bb8e8104d41d4f7f79a1.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.f552868f8be240a4ea8cec7150f7a297.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -88,7 +88,7 @@ English
 <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
 <div id=td-sidebar-menu class=td-sidebar__inner>
 <form class="td-sidebar__search d-flex align-items-center">
-<input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.c094bf1d8259bb8e8104d41d4f7f79a1.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<input type=search class="form-control td-search-input" placeholder="&#xf002; Search this site…" aria-label="Search this site…" autocomplete=off data-offline-search-index-json-src=/offline-search-index.f552868f8be240a4ea8cec7150f7a297.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
 </button>
 </form>
@@ -111,7 +111,7 @@ English
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsinstallationkubectl-apply-li>
 <a href=/docs/installation/kubectl-apply/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsinstallationkubectl-apply><span>kubectl apply</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsinstallationhelm-li>
-<a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/charts/clusterpedia class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsinstallationhelm><span>Helm</span></a>
+<a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsinstallationhelm><span>Helm</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docsinstallationconfiguration-li>
 <a href=/docs/installation/configuration/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docsinstallationconfiguration><span>Configuration</span></a>
 <ul class="ul-3 foldable">
@@ -161,7 +161,9 @@ English
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docsadvanced-features-li>
 <a href=/docs/advanced-features/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docsadvanced-features><span>Advanced Features</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsadvanced-featurescustom_storage_layer-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsadvanced-featureskube_state_metrics-li>
+<a href=/docs/advanced-features/kube_state_metrics/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsadvanced-featureskube_state_metrics><span>Multi-Cluster kube-state-metrics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docsadvanced-featurescustom_storage_layer-li>
 <a href=/docs/advanced-features/custom_storage_layer/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docsadvanced-featurescustom_storage_layer><span>Custom Storage Layer Plugin</span></a>
 </li>
 </ul>

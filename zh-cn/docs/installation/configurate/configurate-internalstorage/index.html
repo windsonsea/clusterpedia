@@ -40,8 +40,8 @@
 默认存储层配置 用户需要在 clusterpedia-system 命名空间下创建 clusterpedia-internalstorage ConfigMap。
 # internalstorage configmap exampleapiVersion:v1kind:ConfigMapmetadata:name:clusterpedia-internalstoragenamespace:clusterpedia-systemdata:internalstorage-config.yaml:|type: &#34;mysql&#34; host: &#34;clusterpedia-internalstorage-mysql&#34; port: 3306 user: root database: &#34;clusterpedia&#34; connPool: maxIdleConns: 10 maxOpenConns: 100 connMaxLifetime: 1h log: slowThreshold: &#34;100ms&#34; logger: filename: /var/log/clusterpedia/internalstorage.log maxbackups: 3internalstorage config 支持以下基本字段:
    field description     type 存储组件的类型，支持 &ldquo;postgres&rdquo; 和 &ldquo;mysql&rdquo;   host 存储组件地址，可以使用 IP 或者 Service Name   port 存储组件端口   user 存储组件用户   password 存储组件密码   database Clusterpedia 所使用的 database    存储组件的访问密码，最好存放在 Secret，参考 配置存储组件密码 Secret">
-<link rel=preload href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css as=style>
-<link href=/scss/main.min.9961c751547efda0481dd5723ad2db290629eb1181b4dd88454b106a6737233e.css rel=stylesheet integrity>
+<link rel=preload href=/scss/main.min.73045c8236ac0eff5872b331509c9baa375a47c43567fa214b7e8cd464d45073.css as=style>
+<link href=/scss/main.min.73045c8236ac0eff5872b331509c9baa375a47c43567fa214b7e8cd464d45073.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
 <script src=https://unpkg.com/lunr@2.3.9/lunr.min.js integrity=sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli crossorigin=anonymous></script>
 <link href=https://cdn.bootcdn.net/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.css rel=stylesheet>
@@ -81,7 +81,7 @@
 </li>
 </ul>
 </div>
-<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.c094bf1d8259bb8e8104d41d4f7f79a1.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<div class="navbar-nav d-none d-lg-block"><input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.f552868f8be240a4ea8cec7150f7a297.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 </div>
 </nav>
 </header>
@@ -91,7 +91,7 @@
 <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
 <div id=td-sidebar-menu class=td-sidebar__inner>
 <form class="td-sidebar__search d-flex align-items-center">
-<input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.c094bf1d8259bb8e8104d41d4f7f79a1.json data-offline-search-base-href=/ data-offline-search-max-results=10>
+<input type=search class="form-control td-search-input" placeholder="&#xf002; 站内搜索…" aria-label=站内搜索… autocomplete=off data-offline-search-index-json-src=/offline-search-index.f552868f8be240a4ea8cec7150f7a297.json data-offline-search-base-href=/ data-offline-search-max-results=10>
 <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
 </button>
 </form>
@@ -114,7 +114,7 @@
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cndocsinstallationkubectl-apply-li>
 <a href=/zh-cn/docs/installation/kubectl-apply/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cndocsinstallationkubectl-apply><span>使用 kubectl apply</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cndocsinstallationhelm-li>
-<a href=https://github.com/clusterpedia-io/clusterpedia/tree/main/charts/clusterpedia class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cndocsinstallationhelm><span>使用 Helm</span></a>
+<a href=https://github.com/clusterpedia-io/clusterpedia-helm/tree/main/charts/clusterpedia class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cndocsinstallationhelm><span>使用 Helm</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-zh-cndocsinstallationconfigurate-li>
 <a href=/zh-cn/docs/installation/configurate/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zh-cndocsinstallationconfigurate><span>配置</span></a>
 <ul class="ul-3 foldable">
@@ -164,7 +164,9 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-zh-cndocsadvanced-features-li>
 <a href=/zh-cn/docs/advanced-features/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-zh-cndocsadvanced-features><span>高级功能</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cndocsadvanced-featurescustom_storage_layer-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cndocsadvanced-featureskube_state_metrics-li>
+<a href=/zh-cn/docs/advanced-features/kube_state_metrics/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cndocsadvanced-featureskube_state_metrics><span>多集群 kube-state-metrics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-zh-cndocsadvanced-featurescustom_storage_layer-li>
 <a href=/zh-cn/docs/advanced-features/custom_storage_layer/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-zh-cndocsadvanced-featurescustom_storage_layer><span>自定义存储层插件</span></a>
 </li>
 </ul>
@@ -404,7 +406,7 @@
 </span></code></pre></div><h3 id=更多配置>更多配置</h3>
 <p>默认存储层还提供了有关 MySQL 和 PostgreSQL 的更多配置，可以参考 <a href=https://github.com/clusterpedia-io/clusterpedia/blob/main/pkg/storage/internalstorage/config.go>internalstorage/config.go</a></p>
 <h2 id=配置存储组件密码-secret>配置存储组件密码 Secret</h2>
-<p>Clusterpedia 的安装 yaml 会从 <code>internalstroage-password</code> 的 Secret 中获取密码。</p>
+<p>Clusterpedia 的安装 yaml 会从 <code>internalstorage-password</code> 的 Secret 中获取密码。</p>
 <p>将存储组件的密码配置到 Secret 中</p>
 <div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl -n clusterpedia-system create secret generic <span style=color:#4e9a06>\
 </span><span style=color:#4e9a06></span>    internalstorage-password --from-literal<span style=color:#ce5c00;font-weight:700>=</span><span style=color:#000>password</span><span style=color:#ce5c00;font-weight:700>=</span>&lt;存储组件访问密码&gt;
